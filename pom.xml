@@ -2,12 +2,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.phoenixbioinformatics.paywall</groupId>
-    <artifactId>paywall-db</artifactId>
+    <groupId>org.phoenixbioinformatics.api</groupId>
+    <artifactId>api-db</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Paywall/DB</name>
-    <description>The Paywall/DB Project.</description>
+    <name>API/DB</name>
+    <description>The API/DB Project.</description>
     <scm>
         <connection></connection>
         <url></url>
@@ -190,9 +190,9 @@
             Oracle9i
         </sql.mappings>
         <tomcat.home>${env.CATALINA_HOME}</tomcat.home>
-        <application.id>paywall-db</application.id>
-        <application.package>org.phoenixbioinformatics.paywall</application.package>
-        <application.name>Paywall/DB</application.name>
+        <application.id>api-db</application.id>
+        <application.package>org.phoenixbioinformatics.api</application.package>
+        <application.name>API/DB</application.name>
         <application.version>1.0</application.version>
         <dataSource.name>jdbc/${application.id}</dataSource.name>
         <dataSource>java:comp/env/${dataSource.name}</dataSource>
@@ -230,17 +230,17 @@
                 </jdbc.driver>
                 <!--
                     Change connection url for appropriate database
-                    For MySQL use: jdbc:mysql://localhost:3306/paywall-db
+                    For MySQL use: jdbc:mysql://localhost:3306/api-db
                     For Hypersonic use: jdbc:hsqldb:hsql://127.0.0.1:1701
                     For Oracle9i use: jdbc:oracle:thin:@localhost:1521:yoursid
-                    For DB2 use: jdbc:db2:paywall-db
-                    For Informix use: jdbc:informix-sqli://localhost:1557/paywall-db:INFORMIXSERVER=myserver
-                    For MSSQL use: jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=paywall-db
-                    For Pointbase use: jdbc:pointbase:server://@pointbase.server@:@pointbase.port/pointbase.paywall-db@,new
-                    For Postgres use: jdbc:postgresql://localhost/paywall-db
-                    For Sybase use: jdbc:sybase:Tds:localhost:5000/paywall-db?JCONNECT_VERSION=6
-                    For SapDB use: jdbc:sapdb://127.0.0.1/paywall-db
-                    For Progress use: jdbc:JdbcProgress:T:localhost:3305:paywall-db
+                    For DB2 use: jdbc:db2:api-db
+                    For Informix use: jdbc:informix-sqli://localhost:1557/api-db:INFORMIXSERVER=myserver
+                    For MSSQL use: jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=api-db
+                    For Pointbase use: jdbc:pointbase:server://@pointbase.server@:@pointbase.port/pointbase.api-db@,new
+                    For Postgres use: jdbc:postgresql://localhost/api-db
+                    For Sybase use: jdbc:sybase:Tds:localhost:5000/api-db?JCONNECT_VERSION=6
+                    For SapDB use: jdbc:sapdb://127.0.0.1/api-db
+                    For Progress use: jdbc:JdbcProgress:T:localhost:3305:api-db
                 -->
                 <jdbc.url>
                     jdbc:hsqldb:hsql://127.0.0.1:1701

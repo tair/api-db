@@ -4,13 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.phoenixbioinformatics.paywall</groupId>
-    <artifactId>paywall-db</artifactId>
+    <groupId>org.phoenixbioinformatics.api-db</groupId>
+    <artifactId>api-db</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>paywall-db-mda</artifactId>
+  <artifactId>api-db-mda</artifactId>
   <packaging>pom</packaging>
-  <name>Paywall/DB MDA</name>
+  <name>API/DB MDA</name>
   <dependencies>
     <dependency>
       <groupId>org.andromda.profiles.emf.uml2</groupId>
@@ -70,9 +70,9 @@
   <classpathentry combineaccessrules="false" kind="src" path="/poesys-db"/>
   <classpathentry combineaccessrules="false" kind="src" path="/andromda"/>
   <classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-  <classpathentry kind="var" path="PAYWALL-DB-LIB/poesys-bs.jar"/>
-  <classpathentry kind="var" path="PAYWALL-DB-LIB/poesys-db.jar"/>
-  <classpathentry kind="var" path="PAYWALL-DB-LIB/java-ipv6-0.15.jar"/>
+  <classpathentry kind="var" path="API-DB-LIB/poesys-bs.jar"/>
+  <classpathentry kind="var" path="API-DB-LIB/poesys-db.jar"/>
+  <classpathentry kind="var" path="API-DB-LIB/java-ipv6-0.15.jar"/>
                   ]]>
           </classpathMerge>
         </configuration>
@@ -80,7 +80,7 @@
     </plugins>
   </build>
   <properties>
-    <model.uri>file:${project.build.sourceDirectory}/paywall-db.uml2</model.uri>
+    <model.uri>file:${project.build.sourceDirectory}/api-db.uml2</model.uri>
     <filter></filter>
     <validation>true</validation>
     <conf.dir>${pom.basedir}/config</conf.dir>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="API-DB-LIB/java-ipv6-0.15.jar"/>
+	<classpathentry kind="var" path="API-DB-LIB/ojdbc6.jar"/>
+	<classpathentry kind="var" path="API-DB-LIB/poesys-bs.jar"/>
+	<classpathentry kind="var" path="API-DB-LIB/poesys-db.jar"/>
+	<classpathentry kind="var" path="API-DB-LIB/poesys-jdbc-pool-1.0.jar"/>
+	<classpathentry kind="var" path="API-DB-LIB/poesys-ms.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
