@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="paywall-db">
+    <property environment="env"/>
+    <property name="M2_REPO" value="../../../../.m2/repository"/>
+    <property name="paywall.location" value="../../paywall/paywall"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../Applications/MyEclipse/MyEclipse 10.app/Contents/Profile"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="hibernate-memcached.location" value="../../../../devora/hibernate-memcached"/>
+    <property name="poesys-ms.location" value="../../../../devora/poesys-ms"/>
+    <property name="yan4j.location" value="../../../../devora/yan4j"/>
+    <property name="xmemcached.location" value="../../../../devora/xmemcached"/>
+    <property name="poesys-db.location" value="../../../../devora/poesys-db"/>
+    <property name="poesys-bs.location" value="../../../../devora/poesys-bs"/>
+    <property name="andromda.location" value="../../../../devora/andromda"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+    </path>
+    <path id="poesys-ms.classpath">
+        <pathelement location="${poesys-ms.location}/bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="COMMON-LIB.userclasspath">
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/jboss-javaee.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/log4j.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/ordim.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/ucp.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/hibernate-core.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/mysql-connector-java-5.1.20-bin.jar"/>
+        <pathelement location="../../../../../../opt/jboss-5.1.0.GA-jdk6/common/lib/ojdbc6.jar"/>
+    </path>
+    <path id="hibernate-memcached.classpath">
+        <pathelement location="${hibernate-memcached.location}/bin"/>
+        <pathelement location="${hibernate-memcached.location}/lib/memcached-2.3.1.jar"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+    </path>
+    <path id="yan4j.classpath">
+        <pathelement location="${yan4j.location}/bin"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+    </path>
+    <path id="xmemcached.classpath">
+        <pathelement location="${xmemcached.location}/bin"/>
+        <path refid="yan4j.classpath"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+        <path refid="hibernate-memcached.classpath"/>
+    </path>
+    <path id="Java EE 6 Libraries.libraryclasspath">
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/bean-validator.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.annotation.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.ejb.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.enterprise.deploy.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.jms.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.management.j2ee.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.persistence.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.resource.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.security.auth.message.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.security.jacc.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.servlet.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.servlet.jsp.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.servlet.jsp.jstl.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/javax.transaction.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/jaxb-api-osgi.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/jsf-api.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/jsf-impl.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/jsr311-api.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/jstl-impl.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/mail.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/webservices-api-osgi.jar"/>
+        <pathelement location="../../../../../../Applications/MyEclipse/Common/plugins/com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805/data/libraryset/EE_6/weld-osgi-bundle.jar"/>
+    </path>
+    <path id="poesys-db.classpath">
+        <pathelement location="${poesys-db.location}/bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <path refid="poesys-ms.classpath"/>
+        <path refid="hibernate-memcached.classpath"/>
+        <path refid="xmemcached.classpath"/>
+        <path refid="yan4j.classpath"/>
+        <pathelement location="${poesys-db.location}/lib/jtds-1.2.jar"/>
+        <pathelement location="${poesys-db.location}/lib/log4j-1.2.16.jar"/>
+        <pathelement location="${poesys-db.location}/lib/mysql-connector-java-5.1.20-bin.jar"/>
+        <pathelement location="${poesys-db.location}/lib/ojdbc6.jar"/>
+        <path refid="Java EE 6 Libraries.libraryclasspath"/>
+        <pathelement location="${poesys-db.location}/lib/poesys-jdbc-pool-1.0.jar"/>
+    </path>
+    <path id="poesys-bs.classpath">
+        <pathelement location="${poesys-bs.location}/bin"/>
+        <path refid="poesys-db.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+    </path>
+    <path id="andromda.classpath">
+        <pathelement location="${andromda.location}/target"/>
+        <pathelement location="${M2_REPO}/commons-lang/commons-lang/2.3/commons-lang-2.3.jar"/>
+        <pathelement location="${M2_REPO}/ant/ant/1.6.5/ant-1.6.5.jar"/>
+        <pathelement location="${M2_REPO}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+        <pathelement location="${M2_REPO}/junit/junit/3.8.1/junit-3.8.1.jar"/>
+        <pathelement location="${M2_REPO}/jmi/jmiuml/1.4di/jmiuml-1.4di.jar"/>
+        <pathelement location="${M2_REPO}/jmi/mof/20030918/mof-20030918.jar"/>
+        <pathelement location="${M2_REPO}/jmi/jmi/20030918/jmi-20030918.jar"/>
+        <pathelement location="${M2_REPO}/velocity/velocity/1.4/velocity-1.4.jar"/>
+        <pathelement location="${M2_REPO}/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
+        <pathelement location="${M2_REPO}/commons-cli/commons-cli/1.0/commons-cli-1.0.jar"/>
+        <pathelement location="${M2_REPO}/commons-dbutils/commons-dbutils/1.0/commons-dbutils-1.0.jar"/>
+        <pathelement location="${M2_REPO}/commons-io/commons-io/1.1/commons-io-1.1.jar"/>
+        <pathelement location="${M2_REPO}/commons-digester/commons-digester/1.7/commons-digester-1.7.jar"/>
+        <pathelement location="${M2_REPO}/jboss/javassist/2.6/javassist-2.6.jar"/>
+        <pathelement location="${M2_REPO}/freemarker/freemarker/2.3.1/freemarker-2.3.1.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-common/2.1.0/emf-common-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-ecore.xmi/2.1.0/emf-ecore.xmi-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-ecore/2.1.0/emf-ecore-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/uml2/eclipse-uml2/1.1.1/eclipse-uml2-1.1.1.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/uml2/eclipse-uml2-common/1.1.1/eclipse-uml2-common-1.1.1.jar"/>
+        <pathelement location="${M2_REPO}/org/netbeans/mdr/jmiutils/20050711/jmiutils-20050711.jar"/>
+        <pathelement location="${M2_REPO}/org/netbeans/mdr/mdrapi/20050711/mdrapi-20050711.jar"/>
+        <pathelement location="${M2_REPO}/org/netbeans/mdr/nbmdr/20050711/nbmdr-20050711.jar"/>
+        <pathelement location="${M2_REPO}/org/netbeans/mdr/openide-util/20050711/openide-util-20050711.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="${M2_REPO}/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
+        <path refid="poesys-bs.classpath"/>
+        <path refid="poesys-db.classpath"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+        <path refid="poesys-ms.classpath"/>
+        <path refid="xmemcached.classpath"/>
+        <path refid="hibernate-memcached.classpath"/>
+        <path refid="yan4j.classpath"/>
+    </path>
+    <path id="paywall-db.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="${M2_REPO}/avalon-framework/avalon-framework/4.1.3/avalon-framework-4.1.3.jar"/>
+        <pathelement location="${M2_REPO}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+        <pathelement location="${M2_REPO}/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
+        <pathelement location="${M2_REPO}/commons-digester/commons-digester/1.7/commons-digester-1.7.jar"/>
+        <pathelement location="${M2_REPO}/commons-lang/commons-lang/2.3/commons-lang-2.3.jar"/>
+        <pathelement location="${M2_REPO}/commons-logging/commons-logging/1.1/commons-logging-1.1.jar"/>
+        <pathelement location="${M2_REPO}/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
+        <pathelement location="${M2_REPO}/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
+        <pathelement location="${M2_REPO}/logkit/logkit/1.0.1/logkit-1.0.1.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/andromda-core/3.3/andromda-core-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/andromda-utils/3.3/andromda-utils-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/cartridges/andromda-java-cartridge/3.3/andromda-java-cartridge-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/cartridges/andromda-meta-cartridge/3.3/andromda-meta-cartridge-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/cartridges/poesys-db-cartridge/3.3/poesys-db-cartridge-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/metafacades/andromda-metafacades-emf-uml2/3.3/andromda-metafacades-emf-uml2-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/metafacades/andromda-metafacades-uml/3.3/andromda-metafacades-uml-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/translationlibraries/andromda-ocl-translation-core/3.3/andromda-ocl-translation-core-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/andromda/translationlibraries/andromda-ocl-validation-library/3.3/andromda-ocl-validation-library-3.3.jar"/>
+        <pathelement location="${M2_REPO}/org/apache/velocity/velocity/1.5/velocity-1.5.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-common/2.1.0/emf-common-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-ecore.xmi/2.1.0/emf-ecore.xmi-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/emf/emf-ecore/2.1.0/emf-ecore-2.1.0.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/uml2/eclipse-uml2-common/1.1.1/eclipse-uml2-common-1.1.1.jar"/>
+        <pathelement location="${M2_REPO}/org/eclipse/uml2/eclipse-uml2/1.1.1/eclipse-uml2-1.1.1.jar"/>
+        <pathelement location="${M2_REPO}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+        <pathelement location="${M2_REPO}/xalan/xalan/2.7.0/xalan-2.7.0.jar"/>
+        <pathelement location="${M2_REPO}/xerces/xercesImpl/2.6.0/xercesImpl-2.6.0.jar"/>
+        <pathelement location="${M2_REPO}/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
+        <path refid="poesys-bs.classpath"/>
+        <path refid="poesys-db.classpath"/>
+        <path refid="andromda.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <path refid="COMMON-LIB.userclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="mda/uml">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="target/java/src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="target/java/gen/src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="target/java/test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="target/java/gen/test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${hibernate-memcached.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${poesys-ms.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${yan4j.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${xmemcached.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${poesys-db.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${poesys-bs.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${andromda.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${hibernate-memcached.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${poesys-ms.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${yan4j.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${xmemcached.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${poesys-db.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${poesys-bs.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${andromda.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="mda/uml"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="target/java/src"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="target/java/gen/src"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="target/java/test"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="target/java/gen/test"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="paywall-db.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build.xml" dir="${paywall.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${paywall.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="OrganizationDelegateTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.phoenixbioinformatics.paywall.bs.paywall.OrganizationDelegateTest" todir="${junit.output.dir}"/>
+            <classpath refid="paywall-db.classpath"/>
+        </junit>
+    </target>
+    <target name="FreeContentDelegateTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.phoenixbioinformatics.paywall.bs.paywall.FreeContentDelegateTest" todir="${junit.output.dir}"/>
+            <classpath refid="paywall-db.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
