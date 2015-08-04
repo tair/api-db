@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration name="Phoenix API">
+
+    <!-- ================================ Append messages to the console ================================ -->
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{MM/dd/yyyy HH:mm:ss,SSS} %-5p [%c] %m%n" />
+        </Console>
+
+        <File name="File" fileName="/var/log/phoenix/phoenix-api.log">
+            <PatternLayout>
+                <Pattern>%d{MM/dd/yyyy HH:mm:ss,SSS} %-5p [%C] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+
+        <RollingFile name="Debug" fileName="/var/log/phoenix/api.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{MM/dd/yyyy HH:mm:ss,SSS} %-5p [%c] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="500 MB" />
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <!-- ================ -->
+    <!-- Limit categories -->
+    <!-- ================ -->
+
+    <!-- Note: if you want to set the priority for only one appender, add <appender-ref ref="CONSOLE"/> or whatever; but note that you 
+        also have the root appending, so you'll get two messages unless you also set log4j.additivity.<package>.<class>=false -->
+
+    <category name="javax.faces">
+        <priority value="WARN" />
+    </category>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console" level="debug" />
+            <AppenderRef ref="File" level="warn" />
+            <AppenderRef ref="Debug" level="debug" />
+        </Root>
+    </Loggers>
+
+</Configuration>
+

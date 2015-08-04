@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project name="api-db" default="jar">
+
+	<property file="build.properties" />
+
+	<property name="src" value="src" />
+	<property name="target" value="target" />
+	<property name="lib" value="lib" />
+	<property name="dist" value="dist" />
+	<property name="build" value="target/classes" />
+	<property name="dist-file" value="api-db" />
+
+	<!-- Target source directories for compilation -->
+	<property name="java-src" value="${target}/java/src" />
+	<property name="java-gen" value="${target}/java/gen/src" />
+	<property name="test-src" value="${target}/java/test" />
+	<property name="test-gen" value="${target}/java/gen/test" />
+
+
+	<!-- The classpath for Java compilation -->
+	<path id="project.classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<path path="${build}" />
+	</path>
+
+	<!-- ================================= 
+          target: compile Compiles the Java classes               
+         ================================= -->
+	<target name="compile" description="Compiles the Java classes">
+		<mkdir dir="${build}" />
+		<javac source="1.7" target="1.7" destdir="${build}" deprecation="false" nowarn="on" debug="on" memoryMaximumSize="512m" fork="true" includeantruntime="false">
+			<classpath refid="project.classpath" />
+			<src path="${src}" />
+			<src path="${java-src}" />
+			<src path="${java-gen}" />
+			<src path="${test-src}" />
+			<src path="${test-gen}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<!-- ================================= 
+          target: jar Builds the distribution jar file with the non-test classes and without the properties files             
+         ================================= -->
+	<target name="jar" depends="compile">
+		<jar destfile="${dist}/${dist-file}.jar">
+			<fileset dir="${build}" includes="**/*.class" excludes="**/*Test*.class, **/*Fake*.class" />
+			<fileset dir="${build}" includes="**/*.properties" excludes="**/*database*, **/*memcached*" />
+			<manifest />
+		</jar>
+	</target>
+
+	<!-- ================================= 
+          target: clean Removes compiled classes, logging configuration files, and jar file
+         ================================= -->
+	<target name="clean" description="Removes compiled classes, logging configuration files, and jar file">
+		<delete dir="${build}/org" />
+		<delete dir="${build}/com" />
+		<delete file="${build}/log4j.xml" />
+		<delete file="${build}/log4j2.xml" />
+		<delete file="${dist}/${dist-file}.jar" />
+	</target>
+
+</project>
