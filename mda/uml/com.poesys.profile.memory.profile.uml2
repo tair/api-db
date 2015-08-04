@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_16_9_90d0292_1302892256785_123121_1401" name="memory" metamodelReference="_16_9_90d0292_1302892256803_129897_1402">
-  <eAnnotations xmi:id="_UlUwtDS_EeWVdrVSKB4OAg" source="attributes">
-    <details xmi:id="_UlUwtTS_EeWVdrVSKB4OAg" key="version" value="0"/>
+  <eAnnotations xmi:id="_-M4oWTraEeWlqIEb5-4EFw" source="attributes">
+    <details xmi:id="_-M4oWjraEeWlqIEb5-4EFw" key="version" value="0"/>
   </eAnnotations>
-  <eAnnotations xmi:id="_UlUwtjS_EeWVdrVSKB4OAg" source="ePackages">
-    <contents xmi:type="ecore:EPackage" xmi:id="_UlUwtzS_EeWVdrVSKB4OAg" name="memory_0" nsURI="http:///memory_0_UYHYEDS_EeWVdrVSKB4OAg.profile.uml2" nsPrefix="memory_0">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UlUwuDS_EeWVdrVSKB4OAg" name="memory__Direct">
-        <eAnnotations xmi:id="_UlUwuTS_EeWVdrVSKB4OAg" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_UlUwujS_EeWVdrVSKB4OAg" key="documentation" value="Direct memory management of DTOs, meaning no caching or messaging, just query from the database into POJO DTOs"/>
+  <eAnnotations xmi:id="_-M4oWzraEeWlqIEb5-4EFw" source="ePackages">
+    <contents xmi:type="ecore:EPackage" xmi:id="_-M4oXDraEeWlqIEb5-4EFw" name="memory_0" nsURI="http:///memory_0_9X2dwDraEeWlqIEb5-4EFw.profile.uml2" nsPrefix="memory_0">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M4oXTraEeWlqIEb5-4EFw" name="memory__Direct">
+        <eAnnotations xmi:id="_-M4oXjraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_-M4oXzraEeWlqIEb5-4EFw" key="documentation" value="Direct memory management of DTOs, meaning no caching or messaging, just query from the database into POJO DTOs"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_UlUwuzS_EeWVdrVSKB4OAg" source="stereotype" references="_16_9_90d0292_1302892269326_656582_1403"/>
+        <eAnnotations xmi:id="_-M4oYDraEeWlqIEb5-4EFw" source="stereotype" references="_16_9_90d0292_1302892269326_656582_1403"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UlUwvDS_EeWVdrVSKB4OAg" name="memory__Distributed">
-        <eAnnotations xmi:id="_UlUwvTS_EeWVdrVSKB4OAg" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_UlUwvjS_EeWVdrVSKB4OAg" key="documentation" value="Memory management using memcached or another distributed cache that allows a clustered web application server to access DTO data from an external cache; a tagged value specifies the caching software used"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M4oYTraEeWlqIEb5-4EFw" name="memory__Distributed">
+        <eAnnotations xmi:id="_-M4oYjraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_-M4oYzraEeWlqIEb5-4EFw" key="documentation" value="Memory management using memcached or another distributed cache that allows a clustered web application server to access DTO data from an external cache; a tagged value specifies the caching software used"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_UlUwvzS_EeWVdrVSKB4OAg" source="stereotype" references="_16_9_90d0292_1302892531985_61824_1424"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UlUwwDS_EeWVdrVSKB4OAg" name="software" ordered="false" lowerBound="1" defaultValueLiteral="memcached">
-          <eAnnotations xmi:id="_UlUwwTS_EeWVdrVSKB4OAg" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_UlUwwjS_EeWVdrVSKB4OAg" key="documentation" value="The specific software used to implement the distributed cache; currently memcached is the only system supported"/>
+        <eAnnotations xmi:id="_-M4oZDraEeWlqIEb5-4EFw" source="stereotype" references="_16_9_90d0292_1302892531985_61824_1424"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M4oZTraEeWlqIEb5-4EFw" name="software" ordered="false" lowerBound="1" defaultValueLiteral="memcached">
+          <eAnnotations xmi:id="_-M4oZjraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_-M4oZzraEeWlqIEb5-4EFw" key="documentation" value="The specific software used to implement the distributed cache; currently memcached is the only system supported"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UlUwwzS_EeWVdrVSKB4OAg" name="memory__Clustered">
-        <eAnnotations xmi:id="_UlUwxDS_EeWVdrVSKB4OAg" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_UlUwxTS_EeWVdrVSKB4OAg" key="documentation" value="Cached memory management using a Java Map of Map caches, one per supported class containing all the DTOs of that class plus a messaging implementation that takes care of deleting updated/deleted nodes from all caches in a clustered system using a Publish/Subscribe messaging model"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M4oaDraEeWlqIEb5-4EFw" name="memory__Clustered">
+        <eAnnotations xmi:id="_-M4oaTraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_-M4oajraEeWlqIEb5-4EFw" key="documentation" value="Cached memory management using a Java Map of Map caches, one per supported class containing all the DTOs of that class plus a messaging implementation that takes care of deleting updated/deleted nodes from all caches in a clustered system using a Publish/Subscribe messaging model"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_UlUwxjS_EeWVdrVSKB4OAg" source="stereotype" references="_16_9_90d0292_1302892423597_491430_1417"/>
+        <eAnnotations xmi:id="_-M4oazraEeWlqIEb5-4EFw" source="stereotype" references="_16_9_90d0292_1302892423597_491430_1417"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_UlUwxzS_EeWVdrVSKB4OAg" name="memory__Cached">
-        <eAnnotations xmi:id="_UlUwyDS_EeWVdrVSKB4OAg" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_UlUwyTS_EeWVdrVSKB4OAg" key="documentation" value="Cached memory management using a Java Map of Map caches, one per supported class containing all the DTOs of that class"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M4obDraEeWlqIEb5-4EFw" name="memory__Cached">
+        <eAnnotations xmi:id="_-M4obTraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_-M4objraEeWlqIEb5-4EFw" key="documentation" value="Cached memory management using a Java Map of Map caches, one per supported class containing all the DTOs of that class"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_UlUwyjS_EeWVdrVSKB4OAg" source="stereotype" references="_16_9_90d0292_1302892338036_277306_1410"/>
+        <eAnnotations xmi:id="_-M4obzraEeWlqIEb5-4EFw" source="stereotype" references="_16_9_90d0292_1302892338036_277306_1410"/>
       </eClassifiers>
     </contents>
   </eAnnotations>

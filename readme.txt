@@ -19,7 +19,7 @@
 
     Custom configuration can be done by updating the root pom.xml file.
 
-    /paywall-db J2EE project
+    /api-db J2EE project
          |
          |    The root of the project contains a few files that control the overall
          |    build process and common properties (in the pom.xml).
@@ -169,7 +169,7 @@
         C:\Documents and Settings${author}\.m2\repository${applicationId}\
 
         (*nix)
-        /home/Bob Muller/.m2/repository/paywall-db/
+        /home/Bob Muller/.m2/repository/api-db/
 
     For questions or feature requests please use our forum:
     http://forum.andromda.org/
@@ -181,7 +181,7 @@
         -- The AndroMDA Team
 
 ===========================================
-Paywall/DB
+API/DB
 
-The Phoenix Bioinformatics Paywall/DB system is an AndroMDA-generated Java
-data access system for the database that supports the Phoenix paywall system.
+The Phoenix Bioinformatics API/DB system is an AndroMDA-generated Java
+data access system for the database that supports the Phoenix Application Programming Interface (API).

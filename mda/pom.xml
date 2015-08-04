@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.phoenixbioinformatics.api-db</groupId>
+    <groupId>org.phoenixbioinformatics.api</groupId>
     <artifactId>api-db</artifactId>
     <version>1.0</version>
   </parent>
@@ -66,12 +66,12 @@
   <classpathentry kind="src" path="target/java/test"/>
   <classpathentry kind="src" path="target/java/gen/test"/>
   <classpathentry kind="src" path="src"/>
-  <classpathentry combineaccessrules="false" kind="src" path="/poesys-bs"/>
-  <classpathentry combineaccessrules="false" kind="src" path="/poesys-db"/>
-  <classpathentry combineaccessrules="false" kind="src" path="/andromda"/>
   <classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+  <classpathentry kind="var" path="API-DB-LIB/ojdbc6.jar"/>
   <classpathentry kind="var" path="API-DB-LIB/poesys-bs.jar"/>
   <classpathentry kind="var" path="API-DB-LIB/poesys-db.jar"/>
+  <classpathentry kind="var" path="API-DB-LIB/poesys-ms.jar"/>
+  <classpathentry kind="var" path="API-DB-LIB/poesys-jdbc-pool-1.0.jar"/>
   <classpathentry kind="var" path="API-DB-LIB/java-ipv6-0.15.jar"/>
                   ]]>
           </classpathMerge>
