@@ -62,7 +62,7 @@ university name
 TAIR community id); used by the partner to identify the user
    * @param partnerId foreign key used by setter to query associated object
    */
-  public BsLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.math.BigInteger partnerId) {
+  public BsLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.lang.String partnerId) {
     super(key, partyId, username, password, email, institution, userIdentifier, partnerId); 
   }
 }

@@ -28,7 +28,7 @@ import org.phoenixbioinformatics.api.db.api.ApiFactory;
 public abstract class AbstractQueryAllSubscriptionDescriptionItem implements IQuerySql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescriptionItem> {
   /** SQL query statement for SubscriptionDescriptionItem */
   private static final String SQL =
-    "SELECT header, partnerId, itemNo, text FROM SubscriptionDescriptionItem";
+    "SELECT descriptionType, partnerId, itemNo, text FROM SubscriptionDescriptionItem";
 
   public org.phoenixbioinformatics.api.db.api.ISubscriptionDescriptionItem getData(ResultSet rs) throws SQLException {
     IPrimaryKey key = 

@@ -28,7 +28,7 @@ import org.phoenixbioinformatics.api.db.api.ApiFactory;
 public abstract class AbstractQueryAllParty implements IQuerySql<org.phoenixbioinformatics.api.db.api.IParty> {
   /** SQL query statement for Party */
   private static final String SQL =
-    "SELECT partyId, name, partyType FROM Party";
+    "SELECT partyId, name, partyType, display, countryId FROM Party";
 
   public org.phoenixbioinformatics.api.db.api.IParty getData(ResultSet rs) throws SQLException {
     IPrimaryKey key = 

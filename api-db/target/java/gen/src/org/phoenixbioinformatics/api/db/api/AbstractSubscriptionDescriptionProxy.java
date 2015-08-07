@@ -120,14 +120,14 @@ public abstract class AbstractSubscriptionDescriptionProxy extends AbstractLazyL
   // Local properties (attributes, associations, and association classes)
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((SubscriptionDescription)dto).getPartnerId();
   }
 
@@ -139,8 +139,8 @@ public abstract class AbstractSubscriptionDescriptionProxy extends AbstractLazyL
    * 
    * @return a java.lang.String
    */
-  public java.lang.String getHeader() {
-    return ((SubscriptionDescription)dto).getHeader();
+  public java.lang.String getDescriptionType() {
+    return ((SubscriptionDescription)dto).getDescriptionType();
   }
 
   /**
@@ -151,13 +151,13 @@ public abstract class AbstractSubscriptionDescriptionProxy extends AbstractLazyL
    * 
    * @return a java.lang.String
    */
-  public java.lang.String getDescriptionType() {
-    return ((SubscriptionDescription)dto).getDescriptionType();
+  public java.lang.String getHeader() {
+    return ((SubscriptionDescription)dto).getHeader();
   }
 
-  public void setDescriptionType(java.lang.String descriptionType)
+  public void setHeader(java.lang.String header)
       throws com.poesys.db.InvalidParametersException {
-    ((SubscriptionDescription)dto).setDescriptionType(descriptionType);
+    ((SubscriptionDescription)dto).setHeader(header);
   }
 
   /**

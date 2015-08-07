@@ -65,7 +65,7 @@ public abstract class AbstractBsIpCount
    * @param ip the IP address being tracked (IPv4 or IPv6)
    * @param count the count of page views by the IP address since initialization
    */
-  public AbstractBsIpCount(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String ip, java.lang.Integer count) {
+  public AbstractBsIpCount(IPrimaryKey key, java.lang.String partnerId, java.lang.String ip, java.lang.Integer count) {
     super(new IpCountProxy(new IpCount(key, partnerId, ip, count)));
   }
 
@@ -101,7 +101,7 @@ public abstract class AbstractBsIpCount
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -109,9 +109,9 @@ public abstract class AbstractBsIpCount
    * <li>Property is defined in the data-access object IpCount</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

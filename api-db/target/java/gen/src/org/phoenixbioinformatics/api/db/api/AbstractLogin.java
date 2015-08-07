@@ -122,7 +122,7 @@ public abstract class AbstractLogin extends AbstractDto implements ILogin {
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -218,7 +218,7 @@ public abstract class AbstractLogin extends AbstractDto implements ILogin {
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -484,7 +484,7 @@ university name
 TAIR community id); used by the partner to identify the user
    * @param partnerId foreign key used by setter to query associated object
    */
-  public AbstractLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.math.BigInteger partnerId) {
+  public AbstractLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.lang.String partnerId) {
     this.key = key;
 
     this.partyId = partyId;
@@ -1062,23 +1062,23 @@ TAIR community id); used by the partner to identify the user
    * Foreign key used by setter to query associated object
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Added by AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Source: AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

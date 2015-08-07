@@ -57,7 +57,7 @@ public class LimitValue extends AbstractLimitValue {
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param value the count at which the limit applies
    */
-  public LimitValue(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer value) {
+  public LimitValue(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer value) {
     super(key, partnerId, value); 
   }
 }

@@ -139,6 +139,83 @@ public interface IParty extends IDbDto {
 
 
   /**
+   * 
+   * <p>
+   * Added by AddLocalAttributeProperties
+   * Owning DTO: ${property.dto.name}
+   * Owning package: ${property.dto.packageName}
+   * Property prefix: display
+   * </p>
+   * @return a java.lang.Boolean display
+   */
+  public java.lang.Boolean getDisplay();
+// Setter here if the four conditions below are all true or not false
+// Read/Write DTO: true
+// Mutable DTO: not false
+// Mutable property: not false
+// Read/Write property: true
+
+  /**
+   * <p>
+   * Set the display.
+   * </p>
+   *
+   * @param display the value to set into the display
+   * @throws com.poesys.db.InvalidParametersException when the display 
+   *       value is null
+   * @throws com.poesys.db.dto.DtoStatusException when the status cannot be set to CHANGED
+   */
+  public void setDisplay(java.lang.Boolean display) throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException;
+
+
+  /**
+   * 
+   * <p>
+   * Added by AddToOneAssociationOptionalObjectProperties
+   * Owning DTO: Country
+   * Owning package: org.phoenixbioinformatics.api.db.api
+   * Property prefix: country
+   * </p>
+   * @return a org.phoenixbioinformatics.api.db.api.ICountry country
+   */
+  public org.phoenixbioinformatics.api.db.api.ICountry getCountry();
+// Setter here if the four conditions below are all true or not false
+// Read/Write DTO: true
+// Mutable DTO: not false
+// Mutable property: not false
+// Read/Write property: true
+
+  /**
+   * <p>
+   * Set the country.
+   * </p>
+   *
+   * @param country the value to set into the country
+   * @throws com.poesys.db.dto.DtoStatusException when the status cannot be set to CHANGED
+   */
+  public void setCountry(org.phoenixbioinformatics.api.db.api.ICountry country) throws com.poesys.db.dto.DtoStatusException;
+
+
+  /**
+   * <p>
+   * Foreign key used by setter to query associated object
+   * </p>
+   * <p>
+   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Owning DTO: Country
+   * Owning package: org.phoenixbioinformatics.api.db.api
+   * Property prefix: country
+   * </p>
+   * @return a java.math.BigInteger countryId
+   */
+  public java.math.BigInteger getCountryId();
+// Setter here if the four conditions below are all true or not false
+// Read/Write DTO: true
+// Mutable DTO: not false
+// Mutable property: not true
+// Read/Write property: false
+
+  /**
    * <p>
    * the system to which the organization subscribes
    * </p>

@@ -44,7 +44,7 @@ public abstract class AbstractApiFactory {
   public static IPartner getPartnerData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument name gets the JDBC value with a function call.
     java.lang.String nameValue = rs.getString("name");
     // Constructor argument logoUri gets the JDBC value with a function call.
@@ -67,14 +67,14 @@ public abstract class AbstractApiFactory {
    * Stereotypes:
    * </p>
    * <ul>
+   *     <li>NaturalKey</li>
    *     <li>Persistent</li>
-   *     <li>SequenceKey</li>
    * </ul>
    * 
    * @param rs a JDBC result set with primary key columns
    * @param prefix an optional prefix string for derived column names in 
    *               associations
-   * @return a Partner SequenceKey primary key
+   * @return a Partner NaturalKey primary key
    * @throws SQLException when there is a problem getting data from the result
    *             set
    * @throws InvalidParametersException when there is a problem creating a key
@@ -85,8 +85,12 @@ public abstract class AbstractApiFactory {
     if (prefix == null) {
       prefix = "";
     }
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
-    key = com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey(prefix + "partnerId", partnerIdValue, "org.phoenixbioinformatics.api.db.api.Partner");
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
+        new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    java.lang.String partnerIdValue = rs.getString("partnerId");
+
+    list.add(new com.poesys.db.col.StringColumnValue(prefix + "partnerId", partnerIdValue));
+    key = com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.Partner");
     return key;
   }
 
@@ -100,20 +104,28 @@ public abstract class AbstractApiFactory {
    * Stereotypes:
    * </p>
    * <ul>
+   *     <li>NaturalKey</li>
    *     <li>Persistent</li>
-   *     <li>SequenceKey</li>
    * </ul>
    * 
-   * @param partnerId primary key attribute
-   * @return a Partner SequenceKey primary key
+   * @param partnerId 
+   * @return a Partner NaturalKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getPartnerPrimaryKey(java.math.BigInteger partnerId)
+  public static IPrimaryKey getPartnerPrimaryKey(java.lang.String partnerId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
-    // Only create a key if the input value is present.
-    if (partnerId != null) {
-      key = com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("partnerId", partnerId, "org.phoenixbioinformatics.api.db.api.Partner");
+    // Track generated inputs for nullity.
+    boolean noNulls = true;
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
+        new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    if (partnerId != null && noNulls) {
+      list.add(new com.poesys.db.col.StringColumnValue("partnerId", partnerId));
+    } else {
+      noNulls = false;
+    }
+    if (noNulls) {
+      key = com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.Partner");
     }
     return key;
   }
@@ -131,7 +143,7 @@ public abstract class AbstractApiFactory {
   public static ISubscriptionTerm getSubscriptionTermData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument period gets the JDBC value with a function call.
     java.lang.Integer periodValue = rs.getInt("period");
     // Constructor argument price gets the JDBC value with a function call.
@@ -203,7 +215,7 @@ public abstract class AbstractApiFactory {
    * @return a SubscriptionTerm CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getSubscriptionTermPrimaryKey(java.math.BigInteger partnerId, java.lang.Integer period)
+  public static IPrimaryKey getSubscriptionTermPrimaryKey(java.lang.String partnerId, java.lang.Integer period)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getPartnerPrimaryKey(partnerId);
@@ -232,7 +244,7 @@ public abstract class AbstractApiFactory {
   public static IPartnerPattern getPartnerPatternData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument sourceUri gets the JDBC value with a function call.
     java.lang.String sourceUriValue = rs.getString("sourceUri");
     // Constructor argument targetUri gets the JDBC value with a function call.
@@ -302,7 +314,7 @@ original URI that comes into the proxy server
    * @return a PartnerPattern CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getPartnerPatternPrimaryKey(java.math.BigInteger partnerId, java.lang.String sourceUri)
+  public static IPrimaryKey getPartnerPatternPrimaryKey(java.lang.String partnerId, java.lang.String sourceUri)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getPartnerPrimaryKey(partnerId);
@@ -331,14 +343,14 @@ original URI that comes into the proxy server
   public static ISubscriptionDescription getSubscriptionDescriptionData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
-    // Constructor argument header gets the JDBC value with a function call.
-    java.lang.String headerValue = rs.getString("header");
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument descriptionType gets the JDBC value with a function call.
     java.lang.String descriptionTypeValue = rs.getString("descriptionType");
+    // Constructor argument header gets the JDBC value with a function call.
+    java.lang.String headerValue = rs.getString("header");
     // SubscriptionDescription has no lazily loaded members, so there is no need for Proxy.
     ISubscriptionDescription newObject = 
-      new SubscriptionDescription(key, partnerIdValue, headerValue, descriptionTypeValue);
+      new SubscriptionDescription(key, partnerIdValue, descriptionTypeValue, headerValue);
     return newObject;
   }
   
@@ -373,8 +385,8 @@ original URI that comes into the proxy server
     IPrimaryKey parentKey = getPartnerPrimaryKey(rs, "");
     java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
         new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
-    java.lang.String headerValue = rs.getString("header");
-    list.add(new com.poesys.db.col.StringColumnValue(prefix + "header", headerValue));
+    java.lang.String descriptionTypeValue = rs.getString("descriptionType");
+    list.add(new com.poesys.db.col.StringColumnValue(prefix + "descriptionType", descriptionTypeValue));
 	IPrimaryKey subKey = com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.SubscriptionDescription");
     key = com.poesys.db.pk.PrimaryKeyFactory.createCompositeKey(parentKey, subKey, "org.phoenixbioinformatics.api.db.api.SubscriptionDescription");
     return key;
@@ -394,12 +406,16 @@ original URI that comes into the proxy server
    *     <li>Persistent</li>
    * </ul>
    * 
-   * @param header the header text for the section display
+   * @param descriptionType the type of description:
+Default
+Individual
+Institution
+Commercial
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @return a SubscriptionDescription CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getSubscriptionDescriptionPrimaryKey(java.lang.String header, java.math.BigInteger partnerId)
+  public static IPrimaryKey getSubscriptionDescriptionPrimaryKey(java.lang.String descriptionType, java.lang.String partnerId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getPartnerPrimaryKey(partnerId);
@@ -408,7 +424,7 @@ original URI that comes into the proxy server
     if (parentKey != null) {
       java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
         new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
-      list.add(new com.poesys.db.col.StringColumnValue("header", header));
+      list.add(new com.poesys.db.col.StringColumnValue("descriptionType", descriptionType));
 	  IPrimaryKey subKey = com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.SubscriptionDescription");
       key = com.poesys.db.pk.PrimaryKeyFactory.createCompositeKey(parentKey, subKey, "org.phoenixbioinformatics.api.db.api.SubscriptionDescription");
     }
@@ -427,17 +443,17 @@ original URI that comes into the proxy server
    */
   public static ISubscriptionDescriptionItem getSubscriptionDescriptionItemData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
-    // Constructor argument header gets the JDBC value with a function call.
-    java.lang.String headerValue = rs.getString("header");
+    // Constructor argument descriptionType gets the JDBC value with a function call.
+    java.lang.String descriptionTypeValue = rs.getString("descriptionType");
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument itemNo gets the JDBC value with a function call.
     java.math.BigInteger itemNoValue = rs.getBigDecimal("itemNo") == null ? null : rs.getBigDecimal("itemNo").toBigInteger();;
     // Constructor argument text gets the JDBC value with a function call.
     java.lang.String textValue = rs.getString("text");
     // SubscriptionDescriptionItem has no lazily loaded members, so there is no need for Proxy.
     ISubscriptionDescriptionItem newObject = 
-      new SubscriptionDescriptionItem(key, headerValue, partnerIdValue, itemNoValue, textValue);
+      new SubscriptionDescriptionItem(key, descriptionTypeValue, partnerIdValue, itemNoValue, textValue);
     return newObject;
   }
   
@@ -493,16 +509,16 @@ original URI that comes into the proxy server
    *     <li>Persistent</li>
    * </ul>
    * 
-   * @param header composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
+   * @param descriptionType composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param itemNo the number that identifies the description item within the description
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @return a SubscriptionDescriptionItem CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getSubscriptionDescriptionItemPrimaryKey(java.lang.String header, java.math.BigInteger itemNo, java.math.BigInteger partnerId)
+  public static IPrimaryKey getSubscriptionDescriptionItemPrimaryKey(java.lang.String descriptionType, java.math.BigInteger itemNo, java.lang.String partnerId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
-    IPrimaryKey parentKey = getSubscriptionDescriptionPrimaryKey(header, partnerId);
+    IPrimaryKey parentKey = getSubscriptionDescriptionPrimaryKey(descriptionType, partnerId);
 
     // Check the parent key; if it is null, the return key should be null.
     if (parentKey != null) {
@@ -623,7 +639,7 @@ original URI that comes into the proxy server
     // Constructor argument userIdentifier gets the JDBC value with a function call.
     java.lang.String userIdentifierValue = rs.getString("userIdentifier");
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Login has no lazily loaded members, so there is no need for Proxy.
     ILogin newObject = 
       new Login(key, partyIdValue, usernameValue, passwordValue, emailValue, institutionValue, userIdentifierValue, partnerIdValue);
@@ -892,7 +908,7 @@ original URI that comes into the proxy server
     // Constructor argument uriPatternId gets the JDBC value with a function call.
     java.math.BigInteger uriPatternIdValue = rs.getBigDecimal("uriPatternId") == null ? null : rs.getBigDecimal("uriPatternId").toBigInteger();;
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     org.phoenixbioinformatics.api.db.api.IPartner partnerValue = null;
     // AccessRule has lazily loaded members or is a lazily loaded association class, so create a Proxy.
     IAccessRule newObject = 
@@ -934,10 +950,13 @@ original URI that comes into the proxy server
     // Property source: AddGeneratedKeyProperties + getAssociatedKeys
     java.math.BigInteger accessTypeIdValue = rs.getBigDecimal("accessTypeId") == null ? null : rs.getBigDecimal("accessTypeId").toBigInteger();
     list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey(prefix + "accessTypeId", accessTypeIdValue, "org.phoenixbioinformatics.api.db.api.AccessRule"));
-    // Associated key type SequenceKey
-    // Property source: AddGeneratedKeyProperties + addAssociationForeignKeys: partnerId
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();
-    list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey(prefix + "partnerId", partnerIdValue, "org.phoenixbioinformatics.api.db.api.AccessRule"));
+    // Associated key type NaturalKey
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> partnerKeys =
+        new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    // Property source: AddNaturalKeyProperties + addAssociationForeignKeys: partnerId
+    java.lang.String partnerIdValue = rs.getString("partnerId");
+    partnerKeys.add(new com.poesys.db.col.StringColumnValue(prefix + "partnerId", partnerIdValue));
+    list.add(com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(partnerKeys, "org.phoenixbioinformatics.api.db.api.AccessRule"));
     // Associated key type SequenceKey
     // Property source: AddGeneratedKeyProperties + getAssociatedKeys
     java.math.BigInteger uriPatternIdValue = rs.getBigDecimal("uriPatternId") == null ? null : rs.getBigDecimal("uriPatternId").toBigInteger();
@@ -966,7 +985,7 @@ original URI that comes into the proxy server
    * @return a AccessRule AssociationKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getAccessRulePrimaryKey(java.math.BigInteger accessTypeId, java.math.BigInteger partnerId, java.math.BigInteger uriPatternId)
+  public static IPrimaryKey getAccessRulePrimaryKey(java.math.BigInteger accessTypeId, java.lang.String partnerId, java.math.BigInteger uriPatternId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     // Track whether any input keys are null.
@@ -979,12 +998,15 @@ original URI that comes into the proxy server
     } else {
       noNulls = false;
     }
-    // Associated key: partner with type SequenceKey
-    if (partnerId != null) {
-      list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("partnerId", partnerId, "org.phoenixbioinformatics.api.db.api.AccessRule"));
+    // Associated key: partner with type NaturalKey
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> partnerKeys =
+      new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    if (partnerId != null && noNulls) {
+      partnerKeys.add(new com.poesys.db.col.StringColumnValue("partnerId", partnerId));
     } else {
       noNulls = false;
     }
+    list.add(com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(partnerKeys, "org.phoenixbioinformatics.api.db.api.AccessRule"));
     // Associated key: uriPatterns with type SequenceKey
     if (uriPatternId != null) {
       list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("uriPatternId", uriPatternId, "org.phoenixbioinformatics.api.db.api.AccessRule"));
@@ -1101,7 +1123,7 @@ original URI that comes into the proxy server
   public static IIpCount getIpCountData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument ip gets the JDBC value with a function call.
     java.lang.String ipValue = rs.getString("ip");
     // Constructor argument count gets the JDBC value with a function call.
@@ -1169,7 +1191,7 @@ original URI that comes into the proxy server
    * @return a IpCount CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getIpCountPrimaryKey(java.lang.String ip, java.math.BigInteger partnerId)
+  public static IPrimaryKey getIpCountPrimaryKey(java.lang.String ip, java.lang.String partnerId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getPartnerPrimaryKey(partnerId);
@@ -1198,7 +1220,7 @@ original URI that comes into the proxy server
   public static ILimitValue getLimitValueData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument value gets the JDBC value with a function call.
     java.lang.Integer valueValue = rs.getInt("value");
     // LimitValue has no lazily loaded members, so there is no need for Proxy.
@@ -1264,7 +1286,7 @@ original URI that comes into the proxy server
    * @return a LimitValue CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getLimitValuePrimaryKey(java.math.BigInteger partnerId, java.lang.Integer value)
+  public static IPrimaryKey getLimitValuePrimaryKey(java.lang.String partnerId, java.lang.Integer value)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getPartnerPrimaryKey(partnerId);
@@ -1298,9 +1320,13 @@ original URI that comes into the proxy server
     java.lang.String nameValue = rs.getString("name");
     // Constructor argument partyType gets the JDBC value with a function call.
     java.lang.String partyTypeValue = rs.getString("partyType");
+    // Constructor argument display gets the JDBC value with a function call.
+    java.lang.Boolean displayValue = rs.getBoolean("display");
+    // Constructor argument countryId gets the JDBC value with a function call.
+    java.math.BigInteger countryIdValue = rs.getBigDecimal("countryId") == null ? null : rs.getBigDecimal("countryId").toBigInteger();;
     // Party has lazily loaded members or is a lazily loaded association class, so create a Proxy.
     IParty newObject = 
-      new PartyProxy(new Party(key, partyIdValue, nameValue, partyTypeValue));
+      new PartyProxy(new Party(key, partyIdValue, nameValue, partyTypeValue, displayValue, countryIdValue));
     return newObject;
   }
   
@@ -1565,7 +1591,7 @@ other range for the subscription
     // Constructor argument purchaseDate gets the JDBC value with a function call.
     java.sql.Timestamp purchaseDateValue = rs.getTimestamp("purchaseDate");
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // ActivationCode has no lazily loaded members, so there is no need for Proxy.
     IActivationCode newObject = 
       new ActivationCode(key, activationCodeIdValue, periodValue, purchaseDateValue, partnerIdValue);
@@ -1646,7 +1672,7 @@ other range for the subscription
   public static ISubscriptionTransaction getSubscriptionTransactionData(IPrimaryKey key, ResultSet rs)
       throws SQLException, InvalidParametersException {
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument partyId gets the JDBC value with a function call.
     java.math.BigInteger partyIdValue = rs.getBigDecimal("partyId") == null ? null : rs.getBigDecimal("partyId").toBigInteger();;
     // Constructor argument transactionNo gets the JDBC value with a function call.
@@ -1726,7 +1752,7 @@ identifies the transaction along with the subscription key
    * @return a SubscriptionTransaction CompositeKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getSubscriptionTransactionPrimaryKey(java.math.BigInteger partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo)
+  public static IPrimaryKey getSubscriptionTransactionPrimaryKey(java.lang.String partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     IPrimaryKey parentKey = getSubscriptionPrimaryKey(partnerId, partyId);
@@ -1759,7 +1785,7 @@ identifies the transaction along with the subscription key
     // Assign null to association key object, as this is set by QuerySetter
     org.phoenixbioinformatics.api.db.api.IParty subscribersObject = null;
     // Constructor argument partnerId gets the JDBC value with a function call.
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();;
+    java.lang.String partnerIdValue = rs.getString("partnerId");
     // Constructor argument partyId gets the JDBC value with a function call.
     java.math.BigInteger partyIdValue = rs.getBigDecimal("partyId") == null ? null : rs.getBigDecimal("partyId").toBigInteger();;
     // Constructor argument startDate gets the JDBC value with a function call.
@@ -1767,7 +1793,7 @@ identifies the transaction along with the subscription key
     // Constructor argument endDate gets the JDBC value with a function call.
     java.sql.Timestamp endDateValue = rs.getTimestamp("endDate");
     // Constructor argument subscriptionId gets the JDBC value with a function call.
-    java.lang.Long subscriptionIdValue = rs.getLong("subscriptionId");
+    java.math.BigInteger subscriptionIdValue = rs.getBigDecimal("subscriptionId") == null ? null : rs.getBigDecimal("subscriptionId").toBigInteger();;
     // Subscription has lazily loaded members or is a lazily loaded association class, so create a Proxy.
     ISubscription newObject = 
       new SubscriptionProxy(new Subscription(key, subscribedPartnersObject, subscribersObject, partnerIdValue, partyIdValue, startDateValue, endDateValue, subscriptionIdValue));
@@ -1804,10 +1830,13 @@ identifies the transaction along with the subscription key
     }
     java.util.ArrayList<IPrimaryKey> list =
         new java.util.ArrayList<IPrimaryKey>();
-    // Associated key type SequenceKey
-    // Property source: AddGeneratedKeyProperties + getAssociatedKeys
-    java.math.BigInteger partnerIdValue = rs.getBigDecimal("partnerId") == null ? null : rs.getBigDecimal("partnerId").toBigInteger();
-    list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey(prefix + "partnerId", partnerIdValue, "org.phoenixbioinformatics.api.db.api.Subscription"));
+    // Associated key type NaturalKey
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> subscribedPartnersKeys =
+        new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    // Property source: AddNaturalKeyProperties + getAssociatedKeys
+    java.lang.String partnerIdValue = rs.getString("partnerId");
+    subscribedPartnersKeys.add(new com.poesys.db.col.StringColumnValue(prefix + "partnerId", partnerIdValue));
+    list.add(com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(subscribedPartnersKeys, "org.phoenixbioinformatics.api.db.api.Subscription"));
     // Associated key type SequenceKey
     // Property source: AddGeneratedKeyProperties + getAssociatedKeys
     java.math.BigInteger partyIdValue = rs.getBigDecimal("partyId") == null ? null : rs.getBigDecimal("partyId").toBigInteger();
@@ -1835,19 +1864,22 @@ identifies the transaction along with the subscription key
    * @return a Subscription AssociationKey primary key
    * @throws InvalidParametersException when there is a problem creating a key
    */
-  public static IPrimaryKey getSubscriptionPrimaryKey(java.math.BigInteger partnerId, java.math.BigInteger partyId)
+  public static IPrimaryKey getSubscriptionPrimaryKey(java.lang.String partnerId, java.math.BigInteger partyId)
       throws InvalidParametersException {
     IPrimaryKey key = null;
     // Track whether any input keys are null.
     boolean noNulls = true;
     java.util.ArrayList<IPrimaryKey> list =
         new java.util.ArrayList<IPrimaryKey>();
-    // Associated key: subscribedPartners with type SequenceKey
-    if (partnerId != null) {
-      list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("partnerId", partnerId, "org.phoenixbioinformatics.api.db.api.Subscription"));
+    // Associated key: subscribedPartners with type NaturalKey
+    java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> subscribedPartnersKeys =
+      new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+    if (partnerId != null && noNulls) {
+      subscribedPartnersKeys.add(new com.poesys.db.col.StringColumnValue("partnerId", partnerId));
     } else {
       noNulls = false;
     }
+    list.add(com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(subscribedPartnersKeys, "org.phoenixbioinformatics.api.db.api.Subscription"));
     // Associated key: subscribers with type SequenceKey
     if (partyId != null) {
       list.add(com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("partyId", partyId, "org.phoenixbioinformatics.api.db.api.Subscription"));

@@ -185,14 +185,14 @@ public abstract class AbstractLoginProxy extends AbstractLazyLoadingDtoProxy imp
   }
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Source: AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((Login)dto).getPartnerId();
   }
 

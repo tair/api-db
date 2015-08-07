@@ -38,7 +38,7 @@ public class AbstractInsertLogin implements IInsertSql<org.phoenixbioinformatics
     index++;
     stmt.setString(index, object.getUserIdentifier());
     index++;
-    stmt.setBigDecimal(index, object.getPartnerId() == null ? null : new java.math.BigDecimal(object.getPartnerId()));
+    stmt.setString(index, object.getPartnerId());
     index++;
   }
 }

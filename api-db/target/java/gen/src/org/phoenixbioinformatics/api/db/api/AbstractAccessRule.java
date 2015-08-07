@@ -152,7 +152,7 @@ public abstract class AbstractAccessRule extends AbstractDto implements IAccessR
    * @param partnerId foreign key used as primary key in association class
    * @param partner 
    */
-  public AbstractAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.math.BigInteger partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
+  public AbstractAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.lang.String partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
     this.key = key;
 
     this.accessTypeId = accessTypeId;
@@ -169,10 +169,6 @@ public abstract class AbstractAccessRule extends AbstractDto implements IAccessR
     
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.partner = partner;
 
     // Associated key object
@@ -292,23 +288,23 @@ public abstract class AbstractAccessRule extends AbstractDto implements IAccessR
    * Foreign key used as primary key in association class
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddExplicitAssociationKeyProperties
+   * Added by AddNaturalKeyProperties + AddExplicitAssociationKeyProperties
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddExplicitAssociationKeyProperties
+   * Source: AddNaturalKeyProperties + AddExplicitAssociationKeyProperties
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

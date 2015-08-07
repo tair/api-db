@@ -72,7 +72,7 @@ identifies the transaction along with the subscription key
    * @param transactionType the kind of transaction: Initial, Renewal, Refund
    * @param activationCodeId foreign key used by setter to query associated object
    */
-  public AbstractBsSubscriptionTransaction(IPrimaryKey key, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) {
+  public AbstractBsSubscriptionTransaction(IPrimaryKey key, java.lang.String partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) {
     super(new SubscriptionTransactionProxy(new SubscriptionTransaction(key, partnerId, partyId, transactionNo, transactionDate, startDate, endDate, transactionType, activationCodeId)));
   }
 
@@ -108,7 +108,7 @@ identifies the transaction along with the subscription key
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -116,9 +116,9 @@ identifies the transaction along with the subscription key
    * <li>Property is defined in the data-access object SubscriptionTransaction</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

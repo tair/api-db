@@ -26,7 +26,7 @@ import com.poesys.db.pk.IPrimaryKey;
 public abstract class AbstractQueryParty implements IKeyQuerySql<org.phoenixbioinformatics.api.db.api.IParty> {
   /** SQL query statement for Party */
   private static final String SQL =
-    "SELECT partyId, name, partyType FROM Party WHERE ";
+    "SELECT partyId, name, partyType, display, countryId FROM Party WHERE ";
 
   public org.phoenixbioinformatics.api.db.api.IParty getData(IPrimaryKey key, ResultSet rs) throws SQLException {
     return org.phoenixbioinformatics.api.db.api.ApiFactory.getPartyData(key, rs);

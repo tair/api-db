@@ -261,18 +261,18 @@ public abstract class AbstractSubscriptionProxy extends AbstractLazyLoadingDtoPr
   }
 
   /**
-   * Get an object of java.lang.Long
+   * Get an object of java.math.BigInteger
    *
    * Source: AddLocalAttributeProperties
    * Lazy: false
    * 
-   * @return a java.lang.Long
+   * @return a java.math.BigInteger
    */
-  public java.lang.Long getSubscriptionId() {
+  public java.math.BigInteger getSubscriptionId() {
     return ((Subscription)dto).getSubscriptionId();
   }
 
-  public void setSubscriptionId(java.lang.Long subscriptionId)
+  public void setSubscriptionId(java.math.BigInteger subscriptionId)
       throws com.poesys.db.InvalidParametersException {
     ((Subscription)dto).setSubscriptionId(subscriptionId);
   }
@@ -423,14 +423,14 @@ public abstract class AbstractSubscriptionProxy extends AbstractLazyLoadingDtoPr
   }
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties
+   * Source: AddNaturalKeyProperties + AddAssociationKeyAttributeProperties
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((Subscription)dto).getPartnerId();
   }
 

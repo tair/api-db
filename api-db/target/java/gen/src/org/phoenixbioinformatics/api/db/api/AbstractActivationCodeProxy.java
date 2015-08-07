@@ -120,14 +120,14 @@ public abstract class AbstractActivationCodeProxy extends AbstractLazyLoadingDto
   }
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Source: AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((ActivationCode)dto).getPartnerId();
   }
 

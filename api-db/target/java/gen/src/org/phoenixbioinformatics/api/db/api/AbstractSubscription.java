@@ -171,8 +171,8 @@ public abstract class AbstractSubscription extends AbstractDto implements ISubsc
       com.poesys.db.dao.update.IUpdateBatch<org.phoenixbioinformatics.api.db.api.ISubscriptionTransaction> updater =
         factory.getUpdateBatch(new org.phoenixbioinformatics.api.db.api.sql.UpdateSubscriptionTransaction());
 
-      // Update the object
-      //updater.setLeaf(true);
+      // Update the object of the leaf class.
+      updater.setLeaf(true);
       updater.update(connection, dtos, dtos.size() / 2);
       // Complete the update by setting the DTOs to EXISTING status.
       for (com.poesys.db.dto.IDbDto dto : dtos) {
@@ -215,7 +215,7 @@ public abstract class AbstractSubscription extends AbstractDto implements ISubsc
       for (com.poesys.db.dto.IDbDto dto : dtos) {
         dto.setSuppressNestedInserts(false);
       }
-      // inserter.setLeaf(true);
+      inserter.setLeaf(true);
       inserter.insert(connection, dtos, dtos.size() / 2);
     }
 
@@ -293,15 +293,11 @@ the subscription is not yet in effect
    * @param endDate the date and time at which the subscription ends
    * @param subscriptionId an alternate single-number identifier for the subscription
    */
-  public AbstractSubscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner subscribedPartnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.Long subscriptionId) {
+  public AbstractSubscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner subscribedPartnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.lang.String partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.math.BigInteger subscriptionId) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.partyId = partyId;
 
     if (partyId == null) {
@@ -576,17 +572,17 @@ the subscription is not yet in effect
    * Property is read/write: true
    * Property is lazy: false
    */
-  private java.lang.Long subscriptionId;
+  private java.math.BigInteger subscriptionId;
   
   /**
-   * Get an object of java.lang.Long.
+   * Get an object of java.math.BigInteger.
    *
    * Source: AddLocalAttributeProperties
    * 
-   * @return a java.lang.Long
+   * @return a java.math.BigInteger
    */
 
-  public java.lang.Long getSubscriptionId() {
+  public java.math.BigInteger getSubscriptionId() {
     return subscriptionId;
   }
 
@@ -616,7 +612,7 @@ the subscription is not yet in effect
    * @param subscriptionId the value with which to set the property
    * @throws com.poesys.db.InvalidParametersException when the input subscriptionId is null
    */
-  public void setSubscriptionId(java.lang.Long subscriptionId)
+  public void setSubscriptionId(java.math.BigInteger subscriptionId)
       throws com.poesys.db.InvalidParametersException {
     if (subscriptionId == null) {
       throw new com.poesys.db.InvalidParametersException("subscriptionId is required");
@@ -789,23 +785,23 @@ the subscription is not yet in effect
    * Attribute that is part of the association key
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties
+   * Source: AddNaturalKeyProperties + AddAssociationKeyAttributeProperties
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

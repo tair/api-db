@@ -34,7 +34,7 @@ public class AbstractInsertActivationCode implements IInsertSql<org.phoenixbioin
     index++;
     stmt.setTimestamp(index, object.getPurchaseDate());
     index++;
-    stmt.setBigDecimal(index, object.getPartnerId() == null ? null : new java.math.BigDecimal(object.getPartnerId()));
+    stmt.setString(index, object.getPartnerId());
     index++;
   }
 }

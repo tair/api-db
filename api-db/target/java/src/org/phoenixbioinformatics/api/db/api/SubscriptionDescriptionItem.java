@@ -52,12 +52,12 @@ public class SubscriptionDescriptionItem extends AbstractSubscriptionDescription
    * </p>
    *
    * @param key the primary key of the SubscriptionDescriptionItem
-   * @param header composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
+   * @param descriptionType composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param itemNo the number that identifies the description item within the description
    * @param text the text to display for the type of context
    */
-  public SubscriptionDescriptionItem(IPrimaryKey key, java.lang.String header, java.math.BigInteger partnerId, java.math.BigInteger itemNo, java.lang.String text) {
-    super(key, header, partnerId, itemNo, text); 
+  public SubscriptionDescriptionItem(IPrimaryKey key, java.lang.String descriptionType, java.lang.String partnerId, java.math.BigInteger itemNo, java.lang.String text) {
+    super(key, descriptionType, partnerId, itemNo, text); 
   }
 }

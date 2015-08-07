@@ -40,7 +40,7 @@ public abstract class AbstractQuerySubscribersByPartner
     implements IParameterizedQuerySql<org.phoenixbioinformatics.api.db.api.IParty, org.phoenixbioinformatics.api.db.api.IPartner> {
   /** SQL query statement for Party */
   private static final String SQL =
-    "SELECT a.partyId, a.name, a.partyType FROM Party a JOIN Subscription b ON a.partyId = b.partyId WHERE b.partnerId = ?";
+    "SELECT a.partyId, a.name, a.partyType, a.display, a.countryId FROM Party a JOIN Subscription b ON a.partyId = b.partyId WHERE b.partnerId = ?";
 
   public void bindParameters(PreparedStatement stmt, org.phoenixbioinformatics.api.db.api.IPartner parameters)
       throws SQLException {

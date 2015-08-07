@@ -62,7 +62,7 @@ original URI that comes into the proxy server
    * @param targetUri the URI that replaces the complete match on the source URI; this is the URI that
 identifies the partner server (the proxied URI for the proxy server)
    */
-  public PartnerPattern(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String sourceUri, java.lang.String targetUri) {
+  public PartnerPattern(IPrimaryKey key, java.lang.String partnerId, java.lang.String sourceUri, java.lang.String targetUri) {
     super(key, partnerId, sourceUri, targetUri); 
   }
 }

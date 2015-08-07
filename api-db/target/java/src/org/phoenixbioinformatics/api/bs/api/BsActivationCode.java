@@ -56,7 +56,7 @@ public class BsActivationCode extends org.phoenixbioinformatics.api.bs.api.Abstr
 code if needed
    * @param partnerId foreign key used by setter to query associated object
    */
-  public BsActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.math.BigInteger partnerId) {
+  public BsActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.lang.String partnerId) {
     super(key, activationCodeId, period, purchaseDate, partnerId); 
   }
 }

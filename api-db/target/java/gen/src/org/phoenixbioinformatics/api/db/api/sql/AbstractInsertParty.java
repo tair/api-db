@@ -22,7 +22,7 @@ import com.poesys.db.pk.IPrimaryKey;
  */
 public class AbstractInsertParty implements IInsertSql<org.phoenixbioinformatics.api.db.api.IParty> {
   private static final String SQL =
-    "INSERT INTO Party (partyId, name, partyType) VALUES (?,?,?)";
+    "INSERT INTO Party (partyId, name, partyType, display, countryId) VALUES (?,?,?,?,?)";
 
   public String getSql(IPrimaryKey key) {
     return SQL;
@@ -33,6 +33,10 @@ public class AbstractInsertParty implements IInsertSql<org.phoenixbioinformatics
     stmt.setString(index, object.getName());
     index++;
     stmt.setString(index, object.getPartyType());
+    index++;
+    stmt.setInt(index, object.getDisplay() ? 1 : 0);
+    index++;
+    stmt.setBigDecimal(index, object.getCountryId() == null ? null : new java.math.BigDecimal(object.getCountryId()));
     index++;
   }
 }

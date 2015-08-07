@@ -59,7 +59,7 @@ public class ActivationCode extends AbstractActivationCode {
 code if needed
    * @param partnerId foreign key used by setter to query associated object
    */
-  public ActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.math.BigInteger partnerId) {
+  public ActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.lang.String partnerId) {
     super(key, activationCodeId, period, purchaseDate, partnerId); 
   }
 }

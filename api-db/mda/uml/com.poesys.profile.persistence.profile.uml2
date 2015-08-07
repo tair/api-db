@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_16_0_90d0292_1252021595271_318891_652" name="persistence" metamodelReference="_16_0_90d0292_1252021595271_318891_652_packageImportcreatedOnLoad">
-  <eAnnotations xmi:id="_-M9ikjraEeWlqIEb5-4EFw" source="attributes">
-    <details xmi:id="_-M9ikzraEeWlqIEb5-4EFw" key="version" value="0"/>
+  <eAnnotations xmi:id="_hvO87j0mEeWhJscB4pIewg" source="attributes">
+    <details xmi:id="_hvO87z0mEeWhJscB4pIewg" key="version" value="0"/>
   </eAnnotations>
-  <eAnnotations xmi:id="_-M9ilDraEeWlqIEb5-4EFw" source="ePackages">
-    <contents xmi:type="ecore:EPackage" xmi:id="_-M9ilTraEeWlqIEb5-4EFw" name="persistence_0" nsURI="http:///persistence_0_9YAOwDraEeWlqIEb5-4EFw.profile.uml2" nsPrefix="persistence_0">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9iljraEeWlqIEb5-4EFw" name="persistence__BooleanString">
-        <eAnnotations xmi:id="_-M9ilzraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9imDraEeWlqIEb5-4EFw" key="documentation" value="Defines a property as a Boolean property (it should have a boolean or Boolean data type) that the persistence mechanism represents as a string (such as Y, N or T, F)"/>
+  <eAnnotations xmi:id="_hvO88D0mEeWhJscB4pIewg" source="ePackages">
+    <contents xmi:type="ecore:EPackage" xmi:id="_hvO88T0mEeWhJscB4pIewg" name="persistence_0" nsURI="http:///persistence_0_hivX4D0mEeWhJscB4pIewg.profile.uml2" nsPrefix="persistence_0">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO88j0mEeWhJscB4pIewg" name="persistence__BooleanString">
+        <eAnnotations xmi:id="_hvO88z0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO89D0mEeWhJscB4pIewg" key="documentation" value="Defines a property as a Boolean property (it should have a boolean or Boolean data type) that the persistence mechanism represents as a string (such as Y, N or T, F)"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9imTraEeWlqIEb5-4EFw" source="stereotype" references="_16_6_2_90d0292_1276714027433_306720_1562"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9imjraEeWlqIEb5-4EFw" name="representation" ordered="false" lowerBound="2" upperBound="2" defaultValueLiteral="">
-          <eAnnotations xmi:id="_-M9imzraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9inDraEeWlqIEb5-4EFw" key="documentation" value="the string representation as a two-element array of strings, the first of which means &quot;True&quot;, the second of which means &quot;False&quot;"/>
+        <eAnnotations xmi:id="_hvO89T0mEeWhJscB4pIewg" source="stereotype" references="_16_6_2_90d0292_1276714027433_306720_1562"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO89j0mEeWhJscB4pIewg" name="representation" ordered="false" lowerBound="2" upperBound="2" defaultValueLiteral="">
+          <eAnnotations xmi:id="_hvO89z0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO8-D0mEeWhJscB4pIewg" key="documentation" value="the string representation as a two-element array of strings, the first of which means &quot;True&quot;, the second of which means &quot;False&quot;"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9inTraEeWlqIEb5-4EFw" name="persistence__CrossDatabase">
-        <eAnnotations xmi:id="_-M9injraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9inzraEeWlqIEb5-4EFw" key="documentation" value="Indicates that a generalization should be treated as being cross-database, meaning that the two classes are in different schemas in different databases and thus cannot have a foreign key implemented between them."/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO8-T0mEeWhJscB4pIewg" name="persistence__CrossDatabase">
+        <eAnnotations xmi:id="_hvO8-j0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO8-z0mEeWhJscB4pIewg" key="documentation" value="Indicates that a generalization should be treated as being cross-database, meaning that the two classes are in different schemas in different databases and thus cannot have a foreign key implemented between them."/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9ioDraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595284_46097_684"/>
+        <eAnnotations xmi:id="_hvO8_D0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595284_46097_684"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9ioTraEeWlqIEb5-4EFw" name="persistence__Persistent">
-        <eAnnotations xmi:id="_-M9iojraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9iozraEeWlqIEb5-4EFw" key="documentation" value="a class or property that persists in a data store of some kind"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO8_T0mEeWhJscB4pIewg" name="persistence__Persistent">
+        <eAnnotations xmi:id="_hvO8_j0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO8_z0mEeWhJscB4pIewg" key="documentation" value="a class or property that persists in a data store of some kind"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9ipDraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595281_289521_669"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9ipTraEeWlqIEb5-4EFw" name="name" ordered="false" upperBound="-1" defaultValueLiteral="">
-          <eAnnotations xmi:id="_-M9ipjraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9ipzraEeWlqIEb5-4EFw" key="documentation" value="the data store name for the table or column if different from the class or property name"/>
+        <eAnnotations xmi:id="_hvO9AD0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595281_289521_669"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9AT0mEeWhJscB4pIewg" name="name" ordered="false" upperBound="-1" defaultValueLiteral="">
+          <eAnnotations xmi:id="_hvO9Aj0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO9Az0mEeWhJscB4pIewg" key="documentation" value="the data store name for the table or column if different from the class or property name"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9iqDraEeWlqIEb5-4EFw" name="readOnly" ordered="false" lowerBound="1" defaultValueLiteral="false">
-          <eAnnotations xmi:id="_-M9iqTraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9iqjraEeWlqIEb5-4EFw" key="documentation" value="whether the class or property is read only; a read-only class does not require insert-update-delete operations and strategies; a read-only property does not require a setter accessor"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9BD0mEeWhJscB4pIewg" name="readOnly" ordered="false" lowerBound="1" defaultValueLiteral="false">
+          <eAnnotations xmi:id="_hvO9BT0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO9Bj0mEeWhJscB4pIewg" key="documentation" value="whether the class or property is read only; a read-only class does not require insert-update-delete operations and strategies; a read-only property does not require a setter accessor"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9iqzraEeWlqIEb5-4EFw" name="fetchSize" ordered="false" lowerBound="1">
-          <eAnnotations xmi:id="_-M9irDraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9irTraEeWlqIEb5-4EFw" key="documentation" value="The JDBC fetch size for queries of this object or property"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Bz0mEeWhJscB4pIewg" name="fetchSize" ordered="false" lowerBound="1">
+          <eAnnotations xmi:id="_hvO9CD0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO9CT0mEeWhJscB4pIewg" key="documentation" value="The JDBC fetch size for queries of this object or property"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9irjraEeWlqIEb5-4EFw" name="batchSize" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Cj0mEeWhJscB4pIewg" name="batchSize" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9irzraEeWlqIEb5-4EFw" name="objectName" ordered="false" lowerBound="1" defaultValueLiteral="">
-          <eAnnotations xmi:id="_-M9isDraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9isTraEeWlqIEb5-4EFw" key="documentation" value="the name of the object in the Java association class that corresponds to the object linked from the associated class; permits a singular name with the associationEnd name being plural and used for the collection of objects in the associating classes; also appears as a constraint name on the foreign-key constraint corresponding to the association"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Cz0mEeWhJscB4pIewg" name="objectName" ordered="false" lowerBound="1" defaultValueLiteral="">
+          <eAnnotations xmi:id="_hvO9DD0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO9DT0mEeWhJscB4pIewg" key="documentation" value="the name of the object in the Java association class that corresponds to the object linked from the associated class; permits a singular name with the associationEnd name being plural and used for the collection of objects in the associating classes; also appears as a constraint name on the foreign-key constraint corresponding to the association"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9isjraEeWlqIEb5-4EFw" name="expiration" ordered="false" lowerBound="1">
-          <eAnnotations xmi:id="_-M9iszraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-            <details xmi:id="_-M9itDraEeWlqIEb5-4EFw" key="documentation" value="the expiration time, in milliseconds, for a persistent object in a target caching system that supports object expiration; default is Integer.MAX_SIZE, the maximum integer supported; 0 means expire immediately (don't cache); has no effect if the caching system does not support expiration"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Dj0mEeWhJscB4pIewg" name="expiration" ordered="false" lowerBound="1">
+          <eAnnotations xmi:id="_hvO9Dz0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_hvO9ED0mEeWhJscB4pIewg" key="documentation" value="the expiration time, in milliseconds, for a persistent object in a target caching system that supports object expiration; default is Integer.MAX_SIZE, the maximum integer supported; 0 means expire immediately (don't cache); has no effect if the caching system does not support expiration"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9itTraEeWlqIEb5-4EFw" name="persistence__Subsystem">
-        <eAnnotations xmi:id="_-M9itjraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9itzraEeWlqIEb5-4EFw" key="documentation" value="A subsystem containing one or more persistent classes and a factory that generates various components of the implementation for the persistent objects"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9ET0mEeWhJscB4pIewg" name="persistence__Subsystem">
+        <eAnnotations xmi:id="_hvO9Ej0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9Ez0mEeWhJscB4pIewg" key="documentation" value="A subsystem containing one or more persistent classes and a factory that generates various components of the implementation for the persistent objects"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9iuDraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595283_536746_678"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9iuTraEeWlqIEb5-4EFw" name="businessPackage" ordered="false" lowerBound="1" defaultValueLiteral="">
+        <eAnnotations xmi:id="_hvO9FD0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595283_536746_678"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9FT0mEeWhJscB4pIewg" name="businessPackage" ordered="false" lowerBound="1" defaultValueLiteral="">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9iujraEeWlqIEb5-4EFw" name="persistence__Lazy">
-        <eAnnotations xmi:id="_-M9iuzraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9ivDraEeWlqIEb5-4EFw" key="documentation" value="a property that loads lazily rather than loading immediately with the other attributes; usually a property that is an association end"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9Fj0mEeWhJscB4pIewg" name="persistence__Lazy">
+        <eAnnotations xmi:id="_hvO9Fz0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9GD0mEeWhJscB4pIewg" key="documentation" value="a property that loads lazily rather than loading immediately with the other attributes; usually a property that is an association end"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9ivTraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595282_703328_674"/>
+        <eAnnotations xmi:id="_hvO9GT0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595282_703328_674"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9ivjraEeWlqIEb5-4EFw" name="persistence__SizedProperty">
-        <eAnnotations xmi:id="_-M9ivzraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9iwDraEeWlqIEb5-4EFw" key="documentation" value="a property having a length (string, varchar, character, clob, blob, and so on)"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9Gj0mEeWhJscB4pIewg" name="persistence__SizedProperty">
+        <eAnnotations xmi:id="_hvO9Gz0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9HD0mEeWhJscB4pIewg" key="documentation" value="a property having a length (string, varchar, character, clob, blob, and so on)"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9iwTraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595282_356341_676"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9iwjraEeWlqIEb5-4EFw" name="length" ordered="false" lowerBound="1">
+        <eAnnotations xmi:id="_hvO9HT0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595282_356341_676"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Hj0mEeWhJscB4pIewg" name="length" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9iwzraEeWlqIEb5-4EFw" name="persistence__Immutable">
-        <eAnnotations xmi:id="_-M9ixDraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9ixTraEeWlqIEb5-4EFw" key="documentation" value="specifies that the class cannot change once created; the system generates no updators or setter access methods for data members and no update methods on the delegates"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9Hz0mEeWhJscB4pIewg" name="persistence__Immutable">
+        <eAnnotations xmi:id="_hvO9ID0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9IT0mEeWhJscB4pIewg" key="documentation" value="specifies that the class cannot change once created; the system generates no updators or setter access methods for data members and no update methods on the delegates"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9ixjraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595283_432397_680"/>
+        <eAnnotations xmi:id="_hvO9Ij0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595283_432397_680"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9ixzraEeWlqIEb5-4EFw" name="persistence__Unremovable">
-        <eAnnotations xmi:id="_-M9iyDraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9iyTraEeWlqIEb5-4EFw" key="documentation" value="The application cannot remove the persistent object once created (cannot delete from the database); the system generates no delete SQL classes or delete methods on the delegates"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9Iz0mEeWhJscB4pIewg" name="persistence__Unremovable">
+        <eAnnotations xmi:id="_hvO9JD0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9JT0mEeWhJscB4pIewg" key="documentation" value="The application cannot remove the persistent object once created (cannot delete from the database); the system generates no delete SQL classes or delete methods on the delegates"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9iyjraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595283_793747_682"/>
+        <eAnnotations xmi:id="_hvO9Jj0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595283_793747_682"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-M9iyzraEeWlqIEb5-4EFw" name="persistence__Number">
-        <eAnnotations xmi:id="_-M9izDraEeWlqIEb5-4EFw" source="http://www.eclipse.org/emf/2002/GenModel">
-          <details xmi:id="_-M9izTraEeWlqIEb5-4EFw" key="documentation" value="a numeric property having a scale and precision"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hvO9Jz0mEeWhJscB4pIewg" name="persistence__Number">
+        <eAnnotations xmi:id="_hvO9KD0mEeWhJscB4pIewg" source="http://www.eclipse.org/emf/2002/GenModel">
+          <details xmi:id="_hvO9KT0mEeWhJscB4pIewg" key="documentation" value="a numeric property having a scale and precision"/>
         </eAnnotations>
-        <eAnnotations xmi:id="_-M9izjraEeWlqIEb5-4EFw" source="stereotype" references="_16_0_90d0292_1252021595282_289530_672"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9izzraEeWlqIEb5-4EFw" name="precision" ordered="false">
+        <eAnnotations xmi:id="_hvO9Kj0mEeWhJscB4pIewg" source="stereotype" references="_16_0_90d0292_1252021595282_289530_672"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9Kz0mEeWhJscB4pIewg" name="precision" ordered="false">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-M9i0DraEeWlqIEb5-4EFw" name="scale" ordered="false">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hvO9LD0mEeWhJscB4pIewg" name="scale" ordered="false">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
       </eClassifiers>

@@ -60,7 +60,7 @@ number with 2 significant digits
    * @param description text describing the term suitable for display in the user interface, such as
 "Annual ($199 USD)" for a 365-day term priced at $199
    */
-  public SubscriptionTerm(IPrimaryKey key, java.math.BigInteger partnerId, Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
+  public SubscriptionTerm(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
     super(key, partnerId, period, price, groupDiscountPercentage, description); 
   }
 }

@@ -40,7 +40,202 @@ import com.poesys.db.dto.DtoStatusException;
 public abstract class AbstractParty extends AbstractDto implements IParty {
   /** Default serial version UID for the Serializable DTO */
   private static final long serialVersionUID = 1L;
+  // Setter strategy nested classes for single-object associations
   
+  /**
+   * Nested class that manages the country association data
+   *
+   * Source: AddToOneAssociationOptionalObjectProperties
+   *
+   * @author Poesys/DB Cartridge
+   */
+  private class QueryCountrySetter extends com.poesys.db.dto.AbstractObjectSetter<org.phoenixbioinformatics.api.db.api.ICountry> {
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Create a QueryCountrySetter object.
+     */
+    public QueryCountrySetter() {
+      super("org.phoenixbioinformatics.api.db.api", 2147483647);
+    }
+
+    @Override
+    protected String getClassName() {
+      return org.phoenixbioinformatics.api.db.api.Country.class.getName();
+    }
+
+    @Override
+    protected IPrimaryKey getKey() {
+      return countryKey;
+    }
+
+    @Override
+    protected com.poesys.db.dao.query.IKeyQuerySql<org.phoenixbioinformatics.api.db.api.ICountry> getSql() {
+      return new org.phoenixbioinformatics.api.db.api.sql.QueryCountry();
+    }
+
+    @Override
+    protected void set(org.phoenixbioinformatics.api.db.api.ICountry dto) {
+      // No status change, this is just filling in the object data.
+      country = dto;
+    }
+
+    @Override
+    public boolean isSet() {
+      // Object is set if the associated country is not null
+      return country != null;
+    }
+  }
+
+  /**
+   * Insert setter for inserting nested object property country.
+   */
+  private class InsertCountrySetter 
+      extends com.poesys.db.dto.AbstractInsertSetter {
+    // Property country source: AddToOneAssociationOptionalObjectProperties
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Create an InsertCountrySetter object.
+     */
+    public InsertCountrySetter() {
+      super("org.phoenixbioinformatics.api.db.api", 2147483647);
+    }
+
+    @Override
+    protected String getClassName() {
+      return org.phoenixbioinformatics.api.db.api.Country.class.getName();
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    protected java.util.Collection<com.poesys.db.dto.IDbDto> getDtos() {
+      java.util.ArrayList<com.poesys.db.dto.IDbDto> array =
+        new java.util.ArrayList<com.poesys.db.dto.IDbDto>(1);
+      array.add(country);
+      java.util.Collection<? extends com.poesys.db.dto.IDbDto> dtos = array;
+      return (java.util.Collection<com.poesys.db.dto.IDbDto>)dtos;
+    }
+
+    @Override
+    protected boolean createKey() {
+      // Key type: SequenceKey
+      return true;
+    }
+  }
+
+  /**
+   * Setter for processing added country, updated country, and 
+   * deleted country. 
+   */
+   
+  private class UpdateCountrySetter 
+      extends com.poesys.db.dto.AbstractProcessNestedObject<org.phoenixbioinformatics.api.db.api.ICountry> {
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Create an UpdateCountrySetter object.
+     */
+    public UpdateCountrySetter() {
+      super("org.phoenixbioinformatics.api.db.api", 2147483647);
+    }
+
+    @Override
+    protected void doChanged(java.sql.Connection connection, org.phoenixbioinformatics.api.db.api.ICountry dto)
+        throws java.sql.SQLException, com.poesys.db.BatchException, com.poesys.db.ConstraintViolationException,
+        com.poesys.db.dto.DtoStatusException {
+        // country source: AddToOneAssociationOptionalObjectProperties
+        // Immutable: false
+      com.poesys.db.dao.IDaoManager manager = 
+        com.poesys.db.dao.DaoManagerFactory.getManager(subsystem);
+      com.poesys.db.dao.IDaoFactory<org.phoenixbioinformatics.api.db.api.ICountry> factory = 
+        manager.getFactory(org.phoenixbioinformatics.api.db.api.Country.class.getName(), subsystem, 2147483647);
+      com.poesys.db.dao.update.IUpdate<org.phoenixbioinformatics.api.db.api.ICountry> updater = 
+        factory.getUpdate(new org.phoenixbioinformatics.api.db.api.sql.UpdateCountry());
+
+      // Update the leaf class.
+      updater.setLeaf(true);
+      updater.update(connection, dto);
+      // Complete the update by setting the DTO to EXISTING status.
+      dto.setExisting();
+    }
+    
+    @Override
+    protected void doDeleted(java.sql.Connection connection, org.phoenixbioinformatics.api.db.api.ICountry dto)
+        throws java.sql.SQLException, com.poesys.db.BatchException, com.poesys.db.ConstraintViolationException,
+        com.poesys.db.dto.DtoStatusException {
+      com.poesys.db.dao.IDaoManager manager = 
+        com.poesys.db.dao.DaoManagerFactory.getManager(subsystem);
+      com.poesys.db.dao.IDaoFactory<org.phoenixbioinformatics.api.db.api.ICountry> factory = 
+        manager.getFactory(org.phoenixbioinformatics.api.db.api.Country.class.getName(), subsystem, 2147483647);
+      com.poesys.db.dao.delete.IDelete<org.phoenixbioinformatics.api.db.api.ICountry> dao = 
+        factory.getDelete(new org.phoenixbioinformatics.api.db.api.sql.DeleteCountry());
+      dao.delete(connection, dto);
+    }
+
+    @Override
+    protected void doNew(java.sql.Connection connection, org.phoenixbioinformatics.api.db.api.ICountry dto)
+        throws java.sql.SQLException, com.poesys.db.BatchException, com.poesys.db.ConstraintViolationException,
+        com.poesys.db.dto.DtoStatusException {
+      com.poesys.db.dao.IDaoManager manager = 
+        com.poesys.db.dao.DaoManagerFactory.getManager(subsystem);
+      com.poesys.db.dao.IDaoFactory<org.phoenixbioinformatics.api.db.api.ICountry> factory = 
+        manager.getFactory(org.phoenixbioinformatics.api.db.api.Country.class.getName(), subsystem, 2147483647);
+      com.poesys.db.dao.insert.IInsert<org.phoenixbioinformatics.api.db.api.ICountry> inserter =
+        factory.getInsert(new org.phoenixbioinformatics.api.db.api.sql.InsertCountry(), createKey());
+
+
+      // Insert the superclass objects from the root down. Suppress nested
+      // inserts for the superclasses, wait until the concrete class. Also set 
+      // pre-insert suppression off to have the root insert linked, to-one class
+      // objects.
+      dto.setSuppressNestedInserts(true);
+      dto.setSuppressNestedPreInserts(false);
+
+      // Suppress inserts in concrete class.
+      dto.setSuppressNestedPreInserts(true);
+      
+      // Insert the object of the current class after enabling nested inserts,
+      // which will allow connecting up linked objects to any of the inserted
+      // classes.
+      dto.setSuppressNestedInserts(false);
+      inserter.setLeaf(true);
+      inserter.insert(connection, dto);
+    }
+
+    @Override
+    protected org.phoenixbioinformatics.api.db.api.ICountry getDto() {
+      return country;
+    }
+    
+    @Override
+    protected String getClassName() {
+      return org.phoenixbioinformatics.api.db.api.Country.class.getName();
+    }
+
+    @Override
+    protected boolean createKey() {
+      // Key type: SequenceKey
+      return true;
+    }
+  }
+
+  /**
+   * Foreign key object used by QueryCountrySetter nested class to query object
+   */
+  private IPrimaryKey countryKey;
+  
+  /**
+   * Set the foreign key countryKey. This has package access to enable
+   * the subsystem factory getData method to call this method to set the key
+   * by creating it from the queried result set.
+   *
+   * @param countryKey the foreign key
+   */
+  void setCountryKey(IPrimaryKey countryKey) {
+    this.countryKey = countryKey;
+  }
+
   // Setter strategy nested classes for multiple-object associations
 
 
@@ -846,7 +1041,7 @@ public abstract class AbstractParty extends AbstractDto implements IParty {
         factory.getUpdateBatch(new org.phoenixbioinformatics.api.db.api.sql.UpdateSubscription());
 
       // Update the object of the leaf class.
-      // updater.setLeaf(true);
+      updater.setLeaf(true);
       updater.update(connection, dtos, dtos.size() / 2);
       // Complete the update by setting the DTOs to EXISTING status.
       for (com.poesys.db.dto.IDbDto dto : dtos) {
@@ -943,6 +1138,11 @@ public abstract class AbstractParty extends AbstractDto implements IParty {
     if (readObjectSetters == null) {
       readObjectSetters = new java.util.concurrent.CopyOnWriteArrayList<com.poesys.db.dto.ISet>();
     }
+
+    // Add the setters for the country property.
+    querySetters.add(new QueryCountrySetter());
+    preSetters.add(new InsertCountrySetter());
+    postSetters.add(new UpdateCountrySetter());
     
     // Add the many-to-many collection setters for the subscribedPartners property.
     insertSetters.add(new InsertSubscribedPartnersSetter());
@@ -976,8 +1176,10 @@ public abstract class AbstractParty extends AbstractDto implements IParty {
    * @param name the name by which the party is known
    * @param partyType the kind of Party this is:
 User
+   * @param display 
+   * @param countryId foreign key used by setter to query associated object
    */
-  public AbstractParty(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType) {
+  public AbstractParty(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType, java.lang.Boolean display, java.math.BigInteger countryId) {
     this.key = key;
 
     this.partyId = partyId;
@@ -998,6 +1200,14 @@ User
       throw new com.poesys.db.InvalidParametersException("partyType is required for " + key.getValueList());
     }
     
+    this.display = display;
+
+    if (display == null) {
+      throw new com.poesys.db.InvalidParametersException("display is required for " + key.getValueList());
+    }
+    
+    this.countryId = countryId;
+
     // Setter arrays (create if null)
     if (querySetters == null) {
       querySetters = new java.util.concurrent.CopyOnWriteArrayList<com.poesys.db.dto.ISet>();
@@ -1017,6 +1227,16 @@ User
     if (readObjectSetters == null) {
       readObjectSetters = new java.util.concurrent.CopyOnWriteArrayList<com.poesys.db.dto.ISet>();
     }
+    
+    // Add the setters for the country property.
+    querySetters.add(new QueryCountrySetter());
+    // Set the object property primary key with a factory method.
+    // TODO: fix problem with foreign keys/associated keys VND-168
+    // countryKey = org.phoenixbioinformatics.api.db.api.ApiFactory.getCountryPrimaryKey();
+    insertSetters.add(new InsertCountrySetter());
+    preSetters.add(new InsertCountrySetter());
+    postSetters.add(new UpdateCountrySetter());
+    
     
     // Add the many-to-many collection setters for the partner property.
     insertSetters.add(new InsertSubscribedPartnersSetter());
@@ -1290,6 +1510,152 @@ User
     
     this.partyType = partyType;
     setChanged();
+  }
+  /**
+   * Nested property display
+   *
+   * 
+   *
+   * Added by AddLocalAttributeProperties
+   * Class is read/write: true
+   * Class is immutable: false
+   * Property is read/write: true
+   * Property is lazy: false
+   */
+  private java.lang.Boolean display;
+  
+  /**
+   * Get an object of java.lang.Boolean.
+   *
+   * Source: AddLocalAttributeProperties
+   * 
+   * @return a java.lang.Boolean
+   */
+
+  public java.lang.Boolean getDisplay() {
+    return display;
+  }
+
+  /**
+   * Clear the display data member; override in proxy if lazily loaded,
+   * otherwise this method does nothing.
+   */
+  public void clearDisplay() {
+    // Override in proxy if lazily loaded; otherwise does nothing
+  }
+
+  /**
+   * <p>
+   * Set the display.
+   * </p>
+   * <ul>
+   * <li>Read/Write DTO: true</li>
+   * <li>Immutable DTO: false</li>
+   * <li>Read/Write property: true</li>
+   * <li>Immutable property: false</li>
+   * <li>Lazy property: false (if true, proxy calls this method)</li>
+   * </ul>
+   * 
+   *
+   * @param display the value with which to set the property
+   * @throws com.poesys.db.InvalidParametersException when the input display is null
+   */
+  public void setDisplay(java.lang.Boolean display)
+      throws com.poesys.db.InvalidParametersException {
+    if (display == null) {
+      throw new com.poesys.db.InvalidParametersException("display is required");
+    }
+    
+    this.display = display;
+    setChanged();
+  }
+  /**
+   * Nested property country
+   *
+   * 
+   *
+   * Added by AddToOneAssociationOptionalObjectProperties
+   * Class is read/write: true
+   * Class is immutable: false
+   * Property is read/write: true
+   * Property is lazy: false
+   */
+  private org.phoenixbioinformatics.api.db.api.ICountry country;
+  
+  /**
+   * Get an object of org.phoenixbioinformatics.api.db.api.ICountry.
+   *
+   * Source: AddToOneAssociationOptionalObjectProperties
+   * 
+   * @return a org.phoenixbioinformatics.api.db.api.ICountry
+   */
+
+  public org.phoenixbioinformatics.api.db.api.ICountry getCountry() {
+    return country;
+  }
+
+  /**
+   * Clear the country data member; override in proxy if lazily loaded,
+   * otherwise this method does nothing.
+   */
+  public void clearCountry() {
+    // Override in proxy if lazily loaded; otherwise does nothing
+  }
+
+  /**
+   * <p>
+   * Set the country.
+   * </p>
+   * <ul>
+   * <li>Read/Write DTO: true</li>
+   * <li>Immutable DTO: false</li>
+   * <li>Read/Write property: true</li>
+   * <li>Immutable property: false</li>
+   * <li>Lazy property: false (if true, proxy calls this method)</li>
+   * </ul>
+   * 
+   *
+   * @param country the value with which to set the property
+   */
+  public  void setCountry(org.phoenixbioinformatics.api.db.api.ICountry country) {
+    this.country = country;
+    // Set the IPrimaryKey cache lookup key.
+    this.countryKey = country.getPrimaryKey();
+    setChanged();
+  }
+  /**
+   * Nested property countryId
+   *
+   * <p>
+   * Foreign key used by setter to query associated object
+   * </p>
+   *
+   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Class is read/write: true
+   * Class is immutable: false
+   * Property is read/write: false
+   * Property is lazy: false
+   */
+  private java.math.BigInteger countryId;
+  
+  /**
+   * Get an object of java.math.BigInteger.
+   *
+   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * 
+   * @return a java.math.BigInteger
+   */
+
+  public java.math.BigInteger getCountryId() {
+    return countryId;
+  }
+
+  /**
+   * Clear the countryId data member; override in proxy if lazily loaded,
+   * otherwise this method does nothing.
+   */
+  public void clearCountryId() {
+    // Override in proxy if lazily loaded; otherwise does nothing
   }
   /**
    * Nested property subscribedPartners

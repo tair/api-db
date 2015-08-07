@@ -22,7 +22,7 @@ import com.poesys.db.pk.IPrimaryKey;
 public class AbstractUpdateSubscriptionDescription implements IUpdateSql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescription> {
   /** SQL UPDATE statement for SubscriptionDescription */
   private static final String SQL =
-    "UPDATE SubscriptionDescription SET descriptionType = ? WHERE ";
+    "UPDATE SubscriptionDescription SET header = ? WHERE ";
 
   @Override
   public String getSql(IPrimaryKey key) {
@@ -34,7 +34,7 @@ public class AbstractUpdateSubscriptionDescription implements IUpdateSql<org.pho
   @Override
   public int setParams(PreparedStatement stmt, int index, org.phoenixbioinformatics.api.db.api.ISubscriptionDescription object)
       throws SQLException {
-    stmt.setString(index, object.getDescriptionType());
+    stmt.setString(index, object.getHeader());
     index++;
     // sets primary key in where clause
     index = object.getPrimaryKey().setParams(stmt, index);

@@ -69,7 +69,7 @@ public abstract class AbstractBsAccessRule
    * @param partnerId foreign key used as primary key in association class
    * @param partner 
    */
-  public AbstractBsAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.math.BigInteger partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
+  public AbstractBsAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.lang.String partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
     super(new AccessRuleProxy(new AccessRule(key, accessTypesObject, partnerObject, uriPatternsObject, accessTypeId, uriPatternId, partnerId, partner)));
   }
 
@@ -105,7 +105,7 @@ public abstract class AbstractBsAccessRule
    * Foreign key used as primary key in association class
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddExplicitAssociationKeyProperties as data member
+   * Added by AddNaturalKeyProperties + AddExplicitAssociationKeyProperties as data member
    * </p>
    * <p>
    * <ul>
@@ -113,9 +113,9 @@ public abstract class AbstractBsAccessRule
    * <li>Property is defined in the data-access object AccessRule</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

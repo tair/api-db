@@ -482,15 +482,11 @@ identifies the transaction along with the subscription key
    * @param transactionType the kind of transaction: Initial, Renewal, Refund
    * @param activationCodeId foreign key used by setter to query associated object
    */
-  public AbstractSubscriptionTransaction(IPrimaryKey key, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) {
+  public AbstractSubscriptionTransaction(IPrimaryKey key, java.lang.String partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.partyId = partyId;
 
     if (partyId == null) {
@@ -640,23 +636,23 @@ identifies the transaction along with the subscription key
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

@@ -119,7 +119,7 @@ public abstract class AbstractIpCount extends AbstractDto implements IIpCount {
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -215,7 +215,7 @@ public abstract class AbstractIpCount extends AbstractDto implements IIpCount {
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -276,15 +276,11 @@ public abstract class AbstractIpCount extends AbstractDto implements IIpCount {
    * @param ip the IP address being tracked (IPv4 or IPv6)
    * @param count the count of page views by the IP address since initialization
    */
-  public AbstractIpCount(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String ip, java.lang.Integer count) {
+  public AbstractIpCount(IPrimaryKey key, java.lang.String partnerId, java.lang.String ip, java.lang.Integer count) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.ip = ip;
 
     if (ip == null) {
@@ -402,23 +398,23 @@ public abstract class AbstractIpCount extends AbstractDto implements IIpCount {
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

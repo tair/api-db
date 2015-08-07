@@ -90,15 +90,15 @@ public abstract class AbstractBsSubscriptionDescription
    *
    * @param key the primary key of the SubscriptionDescription
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
-   * @param header the header text for the section display
    * @param descriptionType the type of description:
 Default
 Individual
 Institution
 Commercial
+   * @param header the header text for the section display
    */
-  public AbstractBsSubscriptionDescription(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String header, java.lang.String descriptionType) {
-    super(new SubscriptionDescriptionProxy(new SubscriptionDescription(key, partnerId, header, descriptionType)));
+  public AbstractBsSubscriptionDescription(IPrimaryKey key, java.lang.String partnerId, java.lang.String descriptionType, java.lang.String header) {
+    super(new SubscriptionDescriptionProxy(new SubscriptionDescription(key, partnerId, descriptionType, header)));
   }
 
   @SuppressWarnings("unchecked")
@@ -133,7 +133,7 @@ Commercial
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -141,29 +141,10 @@ Commercial
    * <li>Property is defined in the data-access object SubscriptionDescription</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
-  }
-
-  /**
-   * <p>
-   * the header text for the section display
-   * </p>
-   * <p>
-   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass as data member
-   * </p>
-   * <p>
-   * <ul>
-   * <li>Property is read/write: false</li>
-   * <li>Property is defined in the data-access object SubscriptionDescription</li>
-   * </ul>
-   * </p>
-   * @return a java.lang.String header
-   */
-  public java.lang.String getHeader() {
-    return dto.getHeader();
   }
 
   /**
@@ -183,11 +164,11 @@ Commercial
    * Commercial
    * </p>
    * <p>
-   * Added by AddLocalAttributeProperties as data member
+   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass as data member
    * </p>
    * <p>
    * <ul>
-   * <li>Property is read/write: true</li>
+   * <li>Property is read/write: false</li>
    * <li>Property is defined in the data-access object SubscriptionDescription</li>
    * </ul>
    * </p>
@@ -199,22 +180,29 @@ Commercial
 
   /**
    * <p>
-   * Set the descriptionType.
+   * the header text for the section display
    * </p>
    * <p>
-   * the type of description:
+   * Added by AddLocalAttributeProperties as data member
    * </p>
    * <p>
-   * Default
+   * <ul>
+   * <li>Property is read/write: true</li>
+   * <li>Property is defined in the data-access object SubscriptionDescription</li>
+   * </ul>
+   * </p>
+   * @return a java.lang.String header
+   */
+  public java.lang.String getHeader() {
+    return dto.getHeader();
+  }
+
+  /**
+   * <p>
+   * Set the header.
    * </p>
    * <p>
-   * Individual
-   * </p>
-   * <p>
-   * Institution
-   * </p>
-   * <p>
-   * Commercial
+   * the header text for the section display
    * </p>
    * <p>
    * Added by AddLocalAttributeProperties
@@ -225,15 +213,15 @@ Commercial
    * <li>Property is defined in the data-access object SubscriptionDescription</li>
    * </ul>
    * </p>
-   * @param descriptionType the associated business object
+   * @param header the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    * @throws com.poesys.db.InvalidParametersException when the property is
-   *                 required but the input parameter descriptionType is null
+   *                 required but the input parameter header is null
    */
-  public void setDescriptionType(java.lang.String descriptionType) 
+  public void setHeader(java.lang.String header) 
       throws com.poesys.db.dto.DtoStatusException , com.poesys.db.InvalidParametersException {
-    dto.setDescriptionType(descriptionType);
+    dto.setHeader(header);
   }
 
   /**

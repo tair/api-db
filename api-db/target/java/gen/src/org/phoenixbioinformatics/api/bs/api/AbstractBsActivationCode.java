@@ -68,7 +68,7 @@ public abstract class AbstractBsActivationCode
 code if needed
    * @param partnerId foreign key used by setter to query associated object
    */
-  public AbstractBsActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.math.BigInteger partnerId) {
+  public AbstractBsActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.lang.String partnerId) {
     super(new ActivationCodeProxy(new ActivationCode(key, activationCodeId, period, purchaseDate, partnerId)));
   }
 
@@ -264,7 +264,7 @@ code if needed
    * Foreign key used by setter to query associated object
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties as data member
+   * Added by AddNaturalKeyProperties + AddToOneAssociationAttributeProperties as data member
    * </p>
    * <p>
    * <ul>
@@ -272,9 +272,9 @@ code if needed
    * <li>Property is defined in the data-access object ActivationCode</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     // Return 3
     return dto.getPartnerId();
   }

@@ -97,7 +97,7 @@ the subscription is not yet in effect
    * @param endDate the date and time at which the subscription ends
    * @param subscriptionId an alternate single-number identifier for the subscription
    */
-  public AbstractBsSubscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner subscribedPartnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.Long subscriptionId) {
+  public AbstractBsSubscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner subscribedPartnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.lang.String partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.math.BigInteger subscriptionId) {
     super(new SubscriptionProxy(new Subscription(key, subscribedPartnersObject, subscribersObject, partnerId, partyId, startDate, endDate, subscriptionId)));
   }
 
@@ -235,9 +235,9 @@ the subscription is not yet in effect
    * <li>Property is defined in the data-access object Subscription</li>
    * </ul>
    * </p>
-   * @return a java.lang.Long subscriptionId
+   * @return a java.math.BigInteger subscriptionId
    */
-  public java.lang.Long getSubscriptionId() {
+  public java.math.BigInteger getSubscriptionId() {
     return dto.getSubscriptionId();
   }
 
@@ -263,7 +263,7 @@ the subscription is not yet in effect
    * @throws com.poesys.db.InvalidParametersException when the property is
    *                 required but the input parameter subscriptionId is null
    */
-  public void setSubscriptionId(java.lang.Long subscriptionId) 
+  public void setSubscriptionId(java.math.BigInteger subscriptionId) 
       throws com.poesys.db.dto.DtoStatusException , com.poesys.db.InvalidParametersException {
     dto.setSubscriptionId(subscriptionId);
   }
@@ -371,7 +371,7 @@ the subscription is not yet in effect
    * Attribute that is part of the association key
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties as data member
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties as data member
    * </p>
    * <p>
    * <ul>
@@ -379,9 +379,9 @@ the subscription is not yet in effect
    * <li>Property is defined in the data-access object Subscription</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

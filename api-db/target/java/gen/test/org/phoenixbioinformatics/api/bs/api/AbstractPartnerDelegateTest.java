@@ -147,7 +147,8 @@ public abstract class AbstractPartnerDelegateTest {
     java.util.Random r = new java.util.Random();
     
     for (int i = 0; i < count; i++) {
-      java.math.BigInteger partnerId = null;
+      java.lang.String partnerId = 
+        com.poesys.cartridges.db.utilities.StringUtilities.generateString(500);
       java.lang.String name = 
         com.poesys.cartridges.db.utilities.StringUtilities.generateString(500);
       java.lang.String logoUri = 
@@ -454,8 +455,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     BsPartner queriedObject = queryStoredObject(key);
@@ -482,8 +483,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key generated from concrete implementation", key != null);
     BsPartner insertedObject = objects.get(0);
     assertTrue("No comparison object for object query", insertedObject != null);
@@ -555,7 +556,7 @@ public abstract class AbstractPartnerDelegateTest {
    * @return the object
    * @throws DelegateException when there is a problem querying the object
    */
-  protected BsPartner queryStoredObject(com.poesys.db.pk.SequencePrimaryKey key)
+  protected BsPartner queryStoredObject(com.poesys.db.pk.NaturalPrimaryKey key)
       throws DelegateException {
     // Clear the caches, then query the saved object and test it.
     clearCaches();
@@ -569,11 +570,11 @@ public abstract class AbstractPartnerDelegateTest {
    * A helper method that tests the stored existence of the object identified
    * by the pre-existing, saved primary key.
    * 
-   * @param key the primary key (com.poesys.db.pk.SequencePrimaryKey) of the object to check
+   * @param key the primary key (com.poesys.db.pk.NaturalPrimaryKey) of the object to check
    * @return true if the object is in the database, false if not
    * @throws DelegateException when there is a problem querying the object
    */
-  protected boolean exists(com.poesys.db.pk.SequencePrimaryKey key) throws DelegateException {
+  protected boolean exists(com.poesys.db.pk.NaturalPrimaryKey key) throws DelegateException {
     // Clear the caches, then query the saved object and test it.
     clearCaches();
 
@@ -590,8 +591,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
     BsPartner insertedObject = objects.get(0);
     assertTrue("No created object to update", insertedObject != null);
@@ -681,7 +682,7 @@ public abstract class AbstractPartnerDelegateTest {
     
     for (BsPartner object : objects) {
       BsPartner queriedObject = 
-        queryStoredObject((com.poesys.db.pk.SequencePrimaryKey)object.getPrimaryKey());
+        queryStoredObject((com.poesys.db.pk.NaturalPrimaryKey)object.getPrimaryKey());
       BsPartner originalObject = map.get(object.getPrimaryKey());
       assertTrue("Object not updated", 
                  isColumnUpdated(originalObject, queriedObject));
@@ -709,8 +710,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
     BsPartner insertedObject = objects.get(0);
     assertTrue("No inserted object to delete", insertedObject != null);
@@ -747,7 +748,7 @@ public abstract class AbstractPartnerDelegateTest {
     delegate.deleteBatch(objects);
 
     for (BsPartner object : objects) {
-      assertTrue("object not deleted", !exists((com.poesys.db.pk.SequencePrimaryKey)object.getPrimaryKey()));
+      assertTrue("object not deleted", !exists((com.poesys.db.pk.NaturalPrimaryKey)object.getPrimaryKey()));
     }
   }
 
@@ -787,14 +788,14 @@ public abstract class AbstractPartnerDelegateTest {
 
     // Verify the update
     BsPartner queriedObject = 
-      queryStoredObject((com.poesys.db.pk.SequencePrimaryKey)existingObjects.get(0).getPrimaryKey());
+      queryStoredObject((com.poesys.db.pk.NaturalPrimaryKey)existingObjects.get(0).getPrimaryKey());
     assertTrue("Update not processed", isColumnUpdated(queriedObject));
 
     // Verify the delete
-    assertTrue("object not deleted", !exists((com.poesys.db.pk.SequencePrimaryKey)existingObjects.get(1).getPrimaryKey()));
+    assertTrue("object not deleted", !exists((com.poesys.db.pk.NaturalPrimaryKey)existingObjects.get(1).getPrimaryKey()));
 
     // Verify the insert
-    assertTrue("object not inserted", exists((com.poesys.db.pk.SequencePrimaryKey)insertObject.get(0).getPrimaryKey()));
+    assertTrue("object not inserted", exists((com.poesys.db.pk.NaturalPrimaryKey)insertObject.get(0).getPrimaryKey()));
     
     // Delete the inserted objects to clean up.
     // Mark all the objects for delete.
@@ -815,8 +816,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     // Test to make sure the object is there.
@@ -854,8 +855,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     // Test to make sure the object is there.
@@ -893,8 +894,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     // Test to make sure the object is there.
@@ -932,8 +933,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     // Test to make sure the object is there.
@@ -971,8 +972,8 @@ public abstract class AbstractPartnerDelegateTest {
     List<BsPartner> objects = createApiPartner(1);
     assertTrue("No object created", objects.get(0) != null);
     delegate.insert(objects);
-    com.poesys.db.pk.SequencePrimaryKey key = 
-      (com.poesys.db.pk.SequencePrimaryKey)objects.get(0).getPrimaryKey();
+    com.poesys.db.pk.NaturalPrimaryKey key = 
+      (com.poesys.db.pk.NaturalPrimaryKey)objects.get(0).getPrimaryKey();
     assertTrue("No key for inserted object", key != null);
 
     // Test to make sure the object is there.

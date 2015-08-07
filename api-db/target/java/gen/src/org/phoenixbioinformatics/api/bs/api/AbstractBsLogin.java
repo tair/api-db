@@ -74,7 +74,7 @@ university name
 TAIR community id); used by the partner to identify the user
    * @param partnerId foreign key used by setter to query associated object
    */
-  public AbstractBsLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.math.BigInteger partnerId) {
+  public AbstractBsLogin(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.lang.String partnerId) {
     super(new LoginProxy(new Login(key, partyId, username, password, email, institution, userIdentifier, partnerId)));
   }
 
@@ -424,7 +424,7 @@ TAIR community id); used by the partner to identify the user
    * Foreign key used by setter to query associated object
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties as data member
+   * Added by AddNaturalKeyProperties + AddToOneAssociationAttributeProperties as data member
    * </p>
    * <p>
    * <ul>
@@ -432,9 +432,9 @@ TAIR community id); used by the partner to identify the user
    * <li>Property is defined in the data-access object Login</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     // Return 3
     return dto.getPartnerId();
   }

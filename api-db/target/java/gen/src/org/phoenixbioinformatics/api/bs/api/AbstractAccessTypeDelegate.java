@@ -183,7 +183,7 @@ public abstract class AbstractAccessTypeDelegate
    * @return a new AccessRule business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsAccessRule createAccessRule(org.phoenixbioinformatics.api.bs.api.BsAccessType accessTypesObject, org.phoenixbioinformatics.api.bs.api.BsPartner partnerObject, org.phoenixbioinformatics.api.bs.api.BsUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.math.BigInteger partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsAccessRule createAccessRule(org.phoenixbioinformatics.api.bs.api.BsAccessType accessTypesObject, org.phoenixbioinformatics.api.bs.api.BsPartner partnerObject, org.phoenixbioinformatics.api.bs.api.BsUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.lang.String partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.AssociationPrimaryKey key = null;
     try {

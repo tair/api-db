@@ -36,8 +36,8 @@ import org.phoenixbioinformatics.api.db.api.Partner;
  * Stereotypes:
  * </p>
  * <ul>
+ *     <li>NaturalKey</li>
  *     <li>Persistent</li>
- *     <li>SequenceKey</li>
  * </ul>
  * <p>
  * Class is read/write: true
@@ -296,12 +296,12 @@ public abstract class AbstractBsPartner
    * Create a Partner from new data.
    *
    * @param key the primary key of the Partner
-   * @param partnerId primary key attribute
+   * @param partnerId 
    * @param name the name of the partner system
    * @param logoUri a URI that returns a logo for the partner
    * @param termOfServiceUri a URI that returns an array of subscription terms for the partner
    */
-  public AbstractBsPartner(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
+  public AbstractBsPartner(IPrimaryKey key, java.lang.String partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
     super(new PartnerProxy(new Partner(key, partnerId, name, logoUri, termOfServiceUri)));
   }
 
@@ -333,11 +333,9 @@ public abstract class AbstractBsPartner
   // Data member properties
 
   /**
+   * 
    * <p>
-   * Primary key attribute
-   * </p>
-   * <p>
-   * Added by AddGeneratedKeyProperties as data member
+   * Added by AddNaturalKeyProperties as data member
    * </p>
    * <p>
    * <ul>
@@ -345,9 +343,9 @@ public abstract class AbstractBsPartner
    * <li>Property is defined in the data-access object Partner</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

@@ -128,9 +128,9 @@ public interface ISubscription extends IDbDto {
    * Owning package: ${property.dto.packageName}
    * Property prefix: subscriptionId
    * </p>
-   * @return a java.lang.Long subscriptionId
+   * @return a java.math.BigInteger subscriptionId
    */
-  public java.lang.Long getSubscriptionId();
+  public java.math.BigInteger getSubscriptionId();
 // Setter here if the four conditions below are all true or not false
 // Read/Write DTO: true
 // Mutable DTO: not false
@@ -147,7 +147,7 @@ public interface ISubscription extends IDbDto {
    *       value is null
    * @throws com.poesys.db.dto.DtoStatusException when the status cannot be set to CHANGED
    */
-  public void setSubscriptionId(java.lang.Long subscriptionId) throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException;
+  public void setSubscriptionId(java.math.BigInteger subscriptionId) throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException;
 
 
   /**
@@ -245,18 +245,18 @@ public interface ISubscription extends IDbDto {
    * Attribute that is part of the association key
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties
    * Owning DTO: Partner
    * Owning package: org.phoenixbioinformatics.api.db.api
    * Property prefix: subscribedPartners
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId();
+  public java.lang.String getPartnerId();
 // Setter here if the four conditions below are all true or not false
 // Read/Write DTO: true
 // Mutable DTO: not false
-// Mutable property: not true
+// Mutable property: not false
 // Read/Write property: false
 
   /**

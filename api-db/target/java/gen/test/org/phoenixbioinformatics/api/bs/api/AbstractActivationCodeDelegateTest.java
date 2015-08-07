@@ -94,7 +94,7 @@ public abstract class AbstractActivationCodeDelegateTest {
     List<org.phoenixbioinformatics.api.bs.api.BsPartner> partnerApiPartnerObjects = createPartnerApiPartner(count);    
     
     for (int i = 0; i < count; i++) {
-      java.math.BigInteger partnerId = partnerApiPartnerObjects.get(i).getPartnerId();
+      java.lang.String partnerId = partnerApiPartnerObjects.get(i).getPartnerId();
       java.util.UUID activationCodeId = null;
       java.lang.Integer period = r.nextInt(999999999);
       // Use random integer here because long might be out of range.
@@ -133,7 +133,7 @@ public abstract class AbstractActivationCodeDelegateTest {
    * <li>Add the new child to the list</li>
    * </ul>
    * <p>
-   * Key type: SequenceKey
+   * Key type: NaturalKey
    * </p>
    * @param count the number of objects to create
    * @return the stored object

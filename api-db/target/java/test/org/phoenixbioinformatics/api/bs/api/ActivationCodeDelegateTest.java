@@ -6,12 +6,10 @@
 package org.phoenixbioinformatics.api.bs.api;
 
 
-import java.math.BigInteger;
-
 import org.phoenixbioinformatics.api.db.api.ApiFactory;
 
 import com.poesys.db.pk.IPrimaryKey;
-import com.poesys.db.pk.SequencePrimaryKey;
+import com.poesys.db.pk.NaturalPrimaryKey;
 
 
 /**
@@ -37,9 +35,9 @@ public class ActivationCodeDelegateTest extends
     java.util.List<org.phoenixbioinformatics.api.bs.api.BsPartner> objects =
       new java.util.concurrent.CopyOnWriteArrayList<org.phoenixbioinformatics.api.bs.api.BsPartner>();
 
-    IPrimaryKey key = ApiFactory.getPartnerPrimaryKey(BigInteger.ONE);
+    IPrimaryKey key = ApiFactory.getPartnerPrimaryKey("tair");
     BsPartner defaultPartner =
-      ApiDelegateFactory.getPartnerDelegate().getObject((SequencePrimaryKey)key);
+      ApiDelegateFactory.getPartnerDelegate().getObject((NaturalPrimaryKey)key);
 
     for (int i = 0; i < count; i++) {
       objects.add(defaultPartner);

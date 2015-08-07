@@ -61,13 +61,13 @@ public abstract class AbstractBsSubscriptionDescriptionItem
    * Create a SubscriptionDescriptionItem from new data.
    *
    * @param key the primary key of the SubscriptionDescriptionItem
-   * @param header composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
+   * @param descriptionType composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param itemNo the number that identifies the description item within the description
    * @param text the text to display for the type of context
    */
-  public AbstractBsSubscriptionDescriptionItem(IPrimaryKey key, java.lang.String header, java.math.BigInteger partnerId, java.math.BigInteger itemNo, java.lang.String text) {
-    super(new SubscriptionDescriptionItemProxy(new SubscriptionDescriptionItem(key, header, partnerId, itemNo, text)));
+  public AbstractBsSubscriptionDescriptionItem(IPrimaryKey key, java.lang.String descriptionType, java.lang.String partnerId, java.math.BigInteger itemNo, java.lang.String text) {
+    super(new SubscriptionDescriptionItemProxy(new SubscriptionDescriptionItem(key, descriptionType, partnerId, itemNo, text)));
   }
 
   @SuppressWarnings("unchecked")
@@ -110,10 +110,10 @@ public abstract class AbstractBsSubscriptionDescriptionItem
    * <li>Property is defined in the data-access object SubscriptionDescriptionItem</li>
    * </ul>
    * </p>
-   * @return a java.lang.String header
+   * @return a java.lang.String descriptionType
    */
-  public java.lang.String getHeader() {
-    return dto.getHeader();
+  public java.lang.String getDescriptionType() {
+    return dto.getDescriptionType();
   }
 
   /**
@@ -121,7 +121,7 @@ public abstract class AbstractBsSubscriptionDescriptionItem
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -129,9 +129,9 @@ public abstract class AbstractBsSubscriptionDescriptionItem
    * <li>Property is defined in the data-access object SubscriptionDescriptionItem</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

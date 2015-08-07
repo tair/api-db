@@ -27,6 +27,8 @@ import com.poesys.db.dto.AbstractLazyLoadingDtoProxy;
 public abstract class AbstractPartyProxy extends AbstractLazyLoadingDtoProxy implements IParty {
   /** Default serial version UID for the Serializable DTO */
   private static final long serialVersionUID = 1L;
+
+  // Lazy-loading query setter strategy nested classes for single-object associations
   
     // Setter strategy nested classes for multiple-object associations
 
@@ -566,6 +568,52 @@ public abstract class AbstractPartyProxy extends AbstractLazyLoadingDtoProxy imp
   public void setPartyType(java.lang.String partyType)
       throws com.poesys.db.InvalidParametersException {
     ((Party)dto).setPartyType(partyType);
+  }
+
+  /**
+   * Get an object of java.lang.Boolean
+   *
+   * Source: AddLocalAttributeProperties
+   * Lazy: false
+   * 
+   * @return a java.lang.Boolean
+   */
+  public java.lang.Boolean getDisplay() {
+    return ((Party)dto).getDisplay();
+  }
+
+  public void setDisplay(java.lang.Boolean display)
+      throws com.poesys.db.InvalidParametersException {
+    ((Party)dto).setDisplay(display);
+  }
+
+  /**
+   * Get an object of org.phoenixbioinformatics.api.db.api.ICountry
+   *
+   * Source: AddToOneAssociationOptionalObjectProperties
+   * Lazy: false
+   * 
+   * @return a org.phoenixbioinformatics.api.db.api.ICountry
+   */
+  public org.phoenixbioinformatics.api.db.api.ICountry getCountry() {
+    return ((Party)dto).getCountry();
+  }
+
+  public void setCountry(org.phoenixbioinformatics.api.db.api.ICountry country)
+      {
+    ((Party)dto).setCountry(country);
+  }
+
+  /**
+   * Get an object of java.math.BigInteger
+   *
+   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Lazy: false
+   * 
+   * @return a java.math.BigInteger
+   */
+  public java.math.BigInteger getCountryId() {
+    return ((Party)dto).getCountryId();
   }
 
   /**

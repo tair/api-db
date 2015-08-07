@@ -9,7 +9,6 @@ package org.phoenixbioinformatics.api.bs.api;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,6 +24,7 @@ import org.phoenixbioinformatics.api.db.api.IUriPattern;
 import com.poesys.bs.delegate.DelegateException;
 import com.poesys.db.InvalidParametersException;
 import com.poesys.db.pk.IPrimaryKey;
+import com.poesys.db.pk.NaturalPrimaryKey;
 import com.poesys.db.pk.SequencePrimaryKey;
 
 
@@ -129,8 +129,8 @@ public class AccessTypeDelegateTest extends
 
       // Use the default partner #1 in a partner list.
       List<BsPartner> partners = new ArrayList<BsPartner>();
-      IPrimaryKey partnerKey = ApiFactory.getPartnerPrimaryKey(BigInteger.ONE);
-      partners.add(ApiDelegateFactory.getPartnerDelegate().getObject((SequencePrimaryKey)partnerKey));
+      IPrimaryKey partnerKey = ApiFactory.getPartnerPrimaryKey("tair");
+      partners.add(ApiDelegateFactory.getPartnerDelegate().getObject((NaturalPrimaryKey)partnerKey));
 
       // Create the rule.
       List<BsAccessRule> rules =
@@ -153,7 +153,8 @@ public class AccessTypeDelegateTest extends
       Collection<BsAccessRule> dbRules = dbType.getAccessRule();
       assertTrue("No access-rule list in access type", dbRules != null);
       for (BsAccessRule dbRule : dbRules) {
-        // Test by comparing association object primary key with original rule key
+        // Test by comparing association object primary key with original rule
+        // key
         assertTrue(dbRule.getPrimaryKey().equals(rule.getPrimaryKey()));
       }
     } catch (InvalidParametersException e) {

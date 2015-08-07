@@ -57,7 +57,7 @@ public class BsAccessRule extends org.phoenixbioinformatics.api.bs.api.AbstractB
    * @param partnerId foreign key used as primary key in association class
    * @param partner 
    */
-  public BsAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.math.BigInteger partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
+  public BsAccessRule(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IAccessType accessTypesObject, org.phoenixbioinformatics.api.db.api.IPartner partnerObject, org.phoenixbioinformatics.api.db.api.IUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.lang.String partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) {
     super(key, accessTypesObject, partnerObject, uriPatternsObject, accessTypeId, uriPatternId, partnerId, partner); 
   }
 }

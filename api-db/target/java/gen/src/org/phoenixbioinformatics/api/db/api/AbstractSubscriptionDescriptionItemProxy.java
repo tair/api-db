@@ -63,19 +63,19 @@ public abstract class AbstractSubscriptionDescriptionItemProxy extends AbstractL
    * 
    * @return a java.lang.String
    */
-  public java.lang.String getHeader() {
-    return ((SubscriptionDescriptionItem)dto).getHeader();
+  public java.lang.String getDescriptionType() {
+    return ((SubscriptionDescriptionItem)dto).getDescriptionType();
   }
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((SubscriptionDescriptionItem)dto).getPartnerId();
   }
 

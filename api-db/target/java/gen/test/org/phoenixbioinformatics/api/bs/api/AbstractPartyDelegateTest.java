@@ -117,16 +117,19 @@ public abstract class AbstractPartyDelegateTest {
     java.util.Random r = new java.util.Random();
     
     for (int i = 0; i < count; i++) {
+      // Create a null variable for the Country, which is not required.
+      java.math.BigInteger countryId = null;
       java.math.BigInteger partyId = null;
       java.lang.String name = 
         com.poesys.cartridges.db.utilities.StringUtilities.generateString(200);
       java.lang.String partyType = 
         com.poesys.cartridges.db.utilities.StringUtilities.generateString(200);
+      java.lang.Boolean display = r.nextBoolean();
 
       // Create the object.
       BsParty object = null;
       try {
-        object = delegate.createParty(partyId, name, partyType);
+        object = delegate.createParty(partyId, name, partyType, display, countryId);
       } catch (InvalidParametersException e) {
         Object[] args = e.getParameters().toArray();
         String message = com.poesys.db.Message.getMessage(e.getMessage(), args);
@@ -261,6 +264,30 @@ public abstract class AbstractPartyDelegateTest {
   abstract protected List<org.phoenixbioinformatics.api.bs.api.BsSubscription> createApiSubscription(List<org.phoenixbioinformatics.api.db.api.IPartner> subscribedPartnersList, List<org.phoenixbioinformatics.api.db.api.IParty> subscribersList, int count) 
       throws DelegateException, InvalidParametersException; // create 1
 
+  /**
+   * <p>
+   * Create some number of new Country objects and return them in a list.  
+   * This is a helper method that the concrete subclass needs to implement. It
+   * returns the "child" corresponding to the superclass.
+   * </p>
+   * <ul>
+   * <li>Create the list to return as a CopyOnWriteArrayList&lt;BsCountry&gt;</li>
+   * <li>Generate random values for any primitive data members</li>
+   * <li>Create the BsCountry by calling delegate.createBs${foreignDto.name}</li>
+   * <li>Add the new child to the list</li>
+   * </ul>
+   * <p>
+   * Key type: SequenceKey
+   * </p>
+   * @param count the number of objects to create
+   * @return the stored object
+   * @throws DelegateException when there is a problem creating an object
+   * @throws InvalidParametersException when there is some problem with the 
+   *                                    input parameters for creating an object
+   */
+  abstract protected List<org.phoenixbioinformatics.api.bs.api.BsCountry> createCountryApiCountry(int count) 
+      throws DelegateException, InvalidParametersException; // create 4
+      
   /**
    * Test method for delegate insert
    */
@@ -466,6 +493,8 @@ public abstract class AbstractPartyDelegateTest {
       retVal && queried.getName().equals(original.getName());
     retVal = 
       retVal && queried.getPartyType().equals(original.getPartyType());
+    retVal = 
+      retVal && queried.getDisplay().equals(original.getDisplay());
     return retVal;
   }
 

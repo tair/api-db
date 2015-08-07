@@ -22,7 +22,7 @@ import com.poesys.db.pk.IPrimaryKey;
 public class AbstractUpdateParty implements IUpdateSql<org.phoenixbioinformatics.api.db.api.IParty> {
   /** SQL UPDATE statement for Party */
   private static final String SQL =
-    "UPDATE Party SET name = ?, partyType = ? WHERE ";
+    "UPDATE Party SET name = ?, partyType = ?, display = ?, countryId = ? WHERE ";
 
   @Override
   public String getSql(IPrimaryKey key) {
@@ -38,6 +38,16 @@ public class AbstractUpdateParty implements IUpdateSql<org.phoenixbioinformatics
     index++;
     stmt.setString(index, object.getPartyType());
     index++;
+    stmt.setInt(index, object.getDisplay() ? 1 : 0);
+    index++;
+    // sets key params for optional country object, which may be null
+    if (object.getCountry() != null) {
+      index = object.getCountry().getPrimaryKey().setParams(stmt, index);
+    } else {
+      // Set the individual parameters to null with the associated SQL type.
+      stmt.setNull(index, java.sql.Types.INTEGER);
+      index++;
+    }
     // sets primary key in where clause
     index = object.getPrimaryKey().setParams(stmt, index);
     return index;

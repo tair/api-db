@@ -55,14 +55,14 @@ public class SubscriptionDescription extends AbstractSubscriptionDescription {
    *
    * @param key the primary key of the SubscriptionDescription
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
-   * @param header the header text for the section display
    * @param descriptionType the type of description:
 Default
 Individual
 Institution
 Commercial
+   * @param header the header text for the section display
    */
-  public SubscriptionDescription(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String header, java.lang.String descriptionType) {
-    super(key, partnerId, header, descriptionType); 
+  public SubscriptionDescription(IPrimaryKey key, java.lang.String partnerId, java.lang.String descriptionType, java.lang.String header) {
+    super(key, partnerId, descriptionType, header); 
   }
 }

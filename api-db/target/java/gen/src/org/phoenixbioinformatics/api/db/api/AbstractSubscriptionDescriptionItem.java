@@ -272,26 +272,22 @@ public abstract class AbstractSubscriptionDescriptionItem extends AbstractDto im
    * Create a SubscriptionDescriptionItem. The concrete subclass must call this constructor.
    *
    * @param key the primary key of the SubscriptionDescriptionItem
-   * @param header composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
+   * @param descriptionType composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param itemNo the number that identifies the description item within the description
    * @param text the text to display for the type of context
    */
-  public AbstractSubscriptionDescriptionItem(IPrimaryKey key, java.lang.String header, java.math.BigInteger partnerId, java.math.BigInteger itemNo, java.lang.String text) {
+  public AbstractSubscriptionDescriptionItem(IPrimaryKey key, java.lang.String descriptionType, java.lang.String partnerId, java.math.BigInteger itemNo, java.lang.String text) {
     this.key = key;
 
-    this.header = header;
+    this.descriptionType = descriptionType;
 
-    if (header == null) {
-      throw new com.poesys.db.InvalidParametersException("header is required for " + key.getValueList());
+    if (descriptionType == null) {
+      throw new com.poesys.db.InvalidParametersException("descriptionType is required for " + key.getValueList());
     }
     
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.itemNo = itemNo;
 
     this.text = text;
@@ -399,7 +395,7 @@ public abstract class AbstractSubscriptionDescriptionItem extends AbstractDto im
 	return connection;
   }
   /**
-   * Nested property header
+   * Nested property descriptionType
    *
    * <p>
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
@@ -411,7 +407,7 @@ public abstract class AbstractSubscriptionDescriptionItem extends AbstractDto im
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.lang.String header;
+  private java.lang.String descriptionType;
   
   /**
    * Get an object of java.lang.String.
@@ -421,15 +417,15 @@ public abstract class AbstractSubscriptionDescriptionItem extends AbstractDto im
    * @return a java.lang.String
    */
 
-  public java.lang.String getHeader() {
-    return header;
+  public java.lang.String getDescriptionType() {
+    return descriptionType;
   }
 
   /**
-   * Clear the header data member; override in proxy if lazily loaded,
+   * Clear the descriptionType data member; override in proxy if lazily loaded,
    * otherwise this method does nothing.
    */
-  public void clearHeader() {
+  public void clearDescriptionType() {
     // Override in proxy if lazily loaded; otherwise does nothing
   }
   /**
@@ -439,23 +435,23 @@ public abstract class AbstractSubscriptionDescriptionItem extends AbstractDto im
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

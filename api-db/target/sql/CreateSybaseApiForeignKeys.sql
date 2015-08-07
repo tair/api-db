@@ -21,7 +21,7 @@ ALTER TABLE SubscriptionDescription ADD CONSTRAINT partner FOREIGN KEY (partnerI
 
 -- Foreign keys for SubscriptionDescriptionItem
 
-ALTER TABLE SubscriptionDescriptionItem ADD CONSTRAINT subscriptionDescription FOREIGN KEY (header, partnerId) REFERENCES SubscriptionDescription(header, partnerId);
+ALTER TABLE SubscriptionDescriptionItem ADD CONSTRAINT subscriptionDescription FOREIGN KEY (descriptionType, partnerId) REFERENCES SubscriptionDescription(descriptionType, partnerId);
 
 -- Foreign keys for Login
 
@@ -49,6 +49,10 @@ ALTER TABLE IpCount ADD CONSTRAINT partner FOREIGN KEY (partnerId) REFERENCES Pa
 -- Foreign keys for LimitValue
 
 ALTER TABLE LimitValue ADD CONSTRAINT partner FOREIGN KEY (partnerId) REFERENCES Partner(partnerId);
+
+-- Foreign keys for Party
+
+ALTER TABLE Party ADD CONSTRAINT country FOREIGN KEY (countryId) REFERENCES Country(countryId);
 
 -- Foreign keys for IpRange
 

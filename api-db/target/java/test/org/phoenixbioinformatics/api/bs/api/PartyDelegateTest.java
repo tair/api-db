@@ -29,6 +29,7 @@ import com.poesys.cartridges.db.utilities.StringUtilities;
 import com.poesys.db.InvalidParametersException;
 import com.poesys.db.dto.DtoStatusException;
 import com.poesys.db.pk.IPrimaryKey;
+import com.poesys.db.pk.NaturalPrimaryKey;
 import com.poesys.db.pk.SequencePrimaryKey;
 
 
@@ -45,6 +46,8 @@ import com.poesys.db.pk.SequencePrimaryKey;
  */
 public class PartyDelegateTest extends
     org.phoenixbioinformatics.api.bs.api.AbstractPartyDelegateTest {
+
+  private static final String DEFAULT_PARTNER = "tair";
 
   @Override
   protected List<BsLogin> createApiLogin(IParty parent, int count)
@@ -65,7 +68,7 @@ public class PartyDelegateTest extends
                              email,
                              institution,
                              userIdentifier,
-                             BigInteger.ONE);
+                             DEFAULT_PARTNER); // use default partner
       objects.add(login);
     }
 
@@ -156,7 +159,7 @@ public class PartyDelegateTest extends
       // Use default partner, TAIR #1
       BsSubscriptionTransaction trans =
         delegate.createSubscriptionTransaction(new BsSubscription(parentSubscription),
-                                               BigInteger.ONE,
+                                               "yfd",
                                                parent.getPartyId(),
                                                BigInteger.valueOf(i),
                                                transactionDate,
@@ -205,7 +208,7 @@ public class PartyDelegateTest extends
       Timestamp startDate = new Timestamp(System.currentTimeMillis());
       Timestamp endDate =
         new Timestamp(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 365));
-      Long subscriptionId =
+      BigInteger subscriptionId =
         ApiDelegateFactory.getPartnerDelegate().getSubscriptionId();
       BsSubscription subscription =
         delegate.createSubscription(partnersObject,
@@ -297,9 +300,9 @@ public class PartyDelegateTest extends
    */
   private List<BsParty> createSubscription() throws SQLException {
     // Query the TAIR partner.
-    IPrimaryKey key = ApiFactory.getPartnerPrimaryKey(BigInteger.ONE);
+    IPrimaryKey key = ApiFactory.getPartnerPrimaryKey(DEFAULT_PARTNER);
     BsPartner partner =
-      ApiDelegateFactory.getPartnerDelegate().getObject((SequencePrimaryKey)key);
+      ApiDelegateFactory.getPartnerDelegate().getObject((NaturalPrimaryKey)key);
     assertTrue("No default partner queried", partner != null);
     List<IPartner> partners = new ArrayList<IPartner>(1);
     partners.add(partner.toDto());
@@ -396,7 +399,7 @@ public class PartyDelegateTest extends
       codeDelegate.createActivationCode(null,
                                         12,
                                         new Timestamp(System.currentTimeMillis()),
-                                        BigInteger.ONE);
+                                        "yfd");
     assertTrue("No activation code created", code != null);
     List<BsActivationCode> codes = new ArrayList<BsActivationCode>(1);
     codes.add(code);
@@ -539,5 +542,22 @@ public class PartyDelegateTest extends
     // return explicit subsystem name
     return "org.phoenixbioinformatics.api.db.api";
     // use super.getSubsystem() to get default subsystem name if needed
+  }
+
+  @Override
+  protected List<BsCountry> createCountryApiCountry(int count)
+      throws DelegateException, InvalidParametersException {
+    java.util.List<BsCountry> objects = new ArrayList<BsCountry>();
+
+    // Use New Zealand for the country associated with the party
+    IPrimaryKey key = ApiFactory.getCountryPrimaryKey(new BigInteger("139"));
+    BsCountry country =
+      ApiDelegateFactory.getCountryDelegate().getObject((SequencePrimaryKey)key);
+
+    for (int i = 0; i < count; i++) {
+      objects.add(country);
+    }
+
+    return objects;
   }
 }

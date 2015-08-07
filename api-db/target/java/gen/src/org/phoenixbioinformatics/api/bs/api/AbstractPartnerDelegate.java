@@ -33,7 +33,7 @@ import com.poesys.db.dao.query.IQuerySql;
  * @author Poesys/DB Cartridge
  */
 public abstract class AbstractPartnerDelegate
-    extends AbstractDataDelegate<BsPartner, org.phoenixbioinformatics.api.db.api.IPartner, com.poesys.db.pk.SequencePrimaryKey> {
+    extends AbstractDataDelegate<BsPartner, org.phoenixbioinformatics.api.db.api.IPartner, com.poesys.db.pk.NaturalPrimaryKey> {
   /**
    * Create an AbstractPartnerDelegate object by supplying the database
    * subsystem in the database.properties file.
@@ -97,11 +97,11 @@ public abstract class AbstractPartnerDelegate
    * Create a new Partner with data fields.
    * </p>
    * <p>
-   * The Partner class has a sequence key; this method generates the
-   * sequence for later insertion into the database.
+   * The Partner class has a natural key; this method creates the primary
+   * key from the appropriate input properties.
    * </p>
    * 
-   * @param partnerId primary key attribute
+   * @param partnerId 
    * @param name the name of the partner system
    * @param logoUri a URI that returns a logo for the partner
    * @param termOfServiceUri a URI that returns an array of subscription terms for the partner
@@ -109,59 +109,23 @@ public abstract class AbstractPartnerDelegate
    * @throws DelegateException when there is a problem generating the key or
    *             creating the object
    */
-  public org.phoenixbioinformatics.api.bs.api.BsPartner createPartner(java.math.BigInteger partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri)
+  public org.phoenixbioinformatics.api.bs.api.BsPartner createPartner(java.lang.String partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri)
       throws DelegateException {
-      com.poesys.db.pk.SequencePrimaryKey key = null;
-
-    // Generate a new Partner id if the input key is null.
-    if (partnerId == null) {
-      java.sql.Connection connection = null;
-      try {
-        connection = getConnection();
-        if (connection == null) {
-          throw new DelegateException("Could not get database connection to generate sequence");
-        }
-        
-        if (dbms.equals(DBMS.MYSQL) || dbms.equals(DBMS.JNDI_MYSQL)) {
-          key =
-            com.poesys.db.pk.PrimaryKeyFactory.createMySqlSequenceKey(connection,
-                                                                      "Partner_SEQ",
-                                                                      "partnerId",
-                                                                      "org.phoenixbioinformatics.api.db.api.Partner");
-        } else if (dbms.equals(DBMS.ORACLE) || dbms.equals(DBMS.JNDI_ORACLE)) {
-          // Create key with sequence Partner_SEQ
-          key =
-            com.poesys.db.pk.PrimaryKeyFactory.createOracleSequenceKey(connection,
-                                                                       "Partner_SEQ",
-                                                                       "partnerId",
-                                                                       "org.phoenixbioinformatics.api.db.api.Partner");
-        } else {
-          throw new DelegateException("com.poesys.bs.delegate.msg.noDbms");
-        }
-        // Get the sequence number for use as an attribute value.
-        partnerId = key.getValue();
-      } catch (com.poesys.db.InvalidParametersException e) {
-        Object[] args = e.getParameters().toArray();
-        String message = com.poesys.db.Message.getMessage(e.getMessage(), args);
-        throw new DelegateException(message, e);
-      } catch (com.poesys.db.NoPrimaryKeyException e) {
-        Object[] args = e.getParameters().toArray();
-        String message = com.poesys.db.Message.getMessage(e.getMessage(), args);
-        throw new DelegateException(message, e);
-      } catch (java.sql.SQLException e) {
-        throw new DelegateException(e.getMessage(), e);
-      } finally {
-        // Done with this connection, close it and return it to the pool.
-        if (connection != null) {
-          try {
-            connection.close();
-          } catch (java.sql.SQLException e) {
-            throw new DelegateException(e.getMessage(), e);
-          }
-        }
-      }
-    } else {
-      key = com.poesys.db.pk.PrimaryKeyFactory.createSequenceKey("partnerId", partnerId, "org.phoenixbioinformatics.api.db.api.Partner");
+    com.poesys.db.pk.NaturalPrimaryKey key = null;
+    try {
+      java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
+        new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
+      list.add(new com.poesys.db.col.StringColumnValue("partnerId", partnerId));
+      key = 
+        com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.Partner");
+    } catch (com.poesys.db.InvalidParametersException e) {
+      Object[] args = e.getParameters().toArray();
+      String message = com.poesys.db.Message.getMessage(e.getMessage(), args);
+      throw new DelegateException(message, e);
+    } catch (com.poesys.db.DuplicateKeyNameException e) {
+      Object[] args = e.getParameters().toArray();
+      String message = com.poesys.db.Message.getMessage(e.getMessage(), args);
+      throw new DelegateException(message, e);
     }
 
     // Create a data-access DTO proxy (supports lazy loading).
@@ -185,7 +149,7 @@ identifies the partner server (the proxied URI for the proxy server)
    * @return a new PartnerPattern business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsPartnerPattern createPartnerPattern(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.lang.String sourceUri, java.lang.String targetUri) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsPartnerPattern createPartnerPattern(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.lang.String sourceUri, java.lang.String targetUri) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -229,7 +193,7 @@ number with 2 significant digits
    * @return a new SubscriptionTerm business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTerm createSubscriptionTerm(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTerm createSubscriptionTerm(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -263,14 +227,14 @@ number with 2 significant digits
    * Create a new SubscriptionDescriptionItem child of Partner with a composite key.
    * 
    * @param parent the parent of the child object to create
-   * @param header composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
+   * @param descriptionType composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param itemNo the number that identifies the description item within the description
    * @param text the text to display for the type of context
    * @return a new SubscriptionDescriptionItem business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescriptionItem createSubscriptionDescriptionItem(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String header, java.math.BigInteger partnerId, java.math.BigInteger itemNo, java.lang.String text) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescriptionItem createSubscriptionDescriptionItem(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String descriptionType, java.lang.String partnerId, java.math.BigInteger itemNo, java.lang.String text) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -295,7 +259,7 @@ number with 2 significant digits
 
     // Create a composite-key child data-access SubscriptionDescriptionItem DTO for direct access, no proxy required.
     org.phoenixbioinformatics.api.db.api.ISubscriptionDescriptionItem dto =
-      new org.phoenixbioinformatics.api.db.api.SubscriptionDescriptionItem(key, header, partnerId, itemNo, text);
+      new org.phoenixbioinformatics.api.db.api.SubscriptionDescriptionItem(key, descriptionType, partnerId, itemNo, text);
 
     // Create the business DTO.
     return new org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescriptionItem(dto);
@@ -305,22 +269,22 @@ number with 2 significant digits
    * 
    * @param parent the parent of the child object to create
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
-   * @param header the header text for the section display
    * @param descriptionType the type of description:
 Default
 Individual
 Institution
 Commercial
+   * @param header the header text for the section display
    * @return a new SubscriptionDescription business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescription createSubscriptionDescription(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.lang.String header, java.lang.String descriptionType) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescription createSubscriptionDescription(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.lang.String descriptionType, java.lang.String header) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
       java.util.ArrayList<com.poesys.db.col.AbstractColumnValue> list =
         new java.util.ArrayList<com.poesys.db.col.AbstractColumnValue>();
-      list.add(new com.poesys.db.col.StringColumnValue("header", header));
+      list.add(new com.poesys.db.col.StringColumnValue("descriptionType", descriptionType));
 	  com.poesys.db.pk.IPrimaryKey subKey = 
 	    com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.SubscriptionDescription");
       key = 
@@ -339,7 +303,7 @@ Commercial
 
     // Create a composite-key child data-access SubscriptionDescription DTO for direct access, no proxy required.
     org.phoenixbioinformatics.api.db.api.ISubscriptionDescription dto =
-      new org.phoenixbioinformatics.api.db.api.SubscriptionDescription(key, partnerId, header, descriptionType);
+      new org.phoenixbioinformatics.api.db.api.SubscriptionDescription(key, partnerId, descriptionType, header);
 
     // Create the business DTO.
     return new org.phoenixbioinformatics.api.bs.api.BsSubscriptionDescription(dto);
@@ -354,7 +318,7 @@ Commercial
    * @return a new IpCount business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsIpCount createIpCount(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.lang.String ip, java.lang.Integer count) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsIpCount createIpCount(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.lang.String ip, java.lang.Integer count) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -393,7 +357,7 @@ Commercial
    * @return a new LimitValue business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsLimitValue createLimitValue(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.lang.Integer value) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsLimitValue createLimitValue(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.lang.Integer value) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -437,7 +401,7 @@ Commercial
    * @return a new AccessRule business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsAccessRule createAccessRule(org.phoenixbioinformatics.api.bs.api.BsAccessType accessTypesObject, org.phoenixbioinformatics.api.bs.api.BsPartner partnerObject, org.phoenixbioinformatics.api.bs.api.BsUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.math.BigInteger partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsAccessRule createAccessRule(org.phoenixbioinformatics.api.bs.api.BsAccessType accessTypesObject, org.phoenixbioinformatics.api.bs.api.BsPartner partnerObject, org.phoenixbioinformatics.api.bs.api.BsUriPattern uriPatternsObject, java.math.BigInteger accessTypeId, java.math.BigInteger uriPatternId, java.lang.String partnerId, org.phoenixbioinformatics.api.db.api.IPartner partner) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.AssociationPrimaryKey key = null;
     try {
@@ -481,7 +445,7 @@ identifies the transaction along with the subscription key
    * @return a new SubscriptionTransaction business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTransaction createSubscriptionTransaction(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTransaction createSubscriptionTransaction(org.phoenixbioinformatics.api.bs.api.BsPartner parent, java.lang.String partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -526,7 +490,7 @@ the subscription is not yet in effect
    * @return a new Subscription business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscription createSubscription(org.phoenixbioinformatics.api.bs.api.BsPartner subscribedPartnersObject, org.phoenixbioinformatics.api.bs.api.BsParty subscribersObject, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.Long subscriptionId) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscription createSubscription(org.phoenixbioinformatics.api.bs.api.BsPartner subscribedPartnersObject, org.phoenixbioinformatics.api.bs.api.BsParty subscribersObject, java.lang.String partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.math.BigInteger subscriptionId) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.AssociationPrimaryKey key = null;
     try {

@@ -59,33 +59,14 @@ public interface ISubscriptionDescription extends IDbDto {
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Owning DTO: ${property.dto.name}
    * Owning package: ${property.dto.packageName}
-   * Property prefix: ${property.prefix}
+   * Property prefix: partnerId
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId();
-// Setter here if the four conditions below are all true or not false
-// Read/Write DTO: true
-// Mutable DTO: not false
-// Mutable property: not true
-// Read/Write property: false
-
-  /**
-   * <p>
-   * the header text for the section display
-   * </p>
-   * <p>
-   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
-   * Owning DTO: ${property.dto.name}
-   * Owning package: ${property.dto.packageName}
-   * Property prefix: header
-   * </p>
-   * @return a java.lang.String header
-   */
-  public java.lang.String getHeader();
+  public java.lang.String getPartnerId();
 // Setter here if the four conditions below are all true or not false
 // Read/Write DTO: true
 // Mutable DTO: not false
@@ -109,7 +90,7 @@ public interface ISubscriptionDescription extends IDbDto {
    * Commercial
    * </p>
    * <p>
-   * Added by AddLocalAttributeProperties
+   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
    * Owning DTO: ${property.dto.name}
    * Owning package: ${property.dto.packageName}
    * Property prefix: descriptionType
@@ -121,19 +102,38 @@ public interface ISubscriptionDescription extends IDbDto {
 // Read/Write DTO: true
 // Mutable DTO: not false
 // Mutable property: not false
+// Read/Write property: false
+
+  /**
+   * <p>
+   * the header text for the section display
+   * </p>
+   * <p>
+   * Added by AddLocalAttributeProperties
+   * Owning DTO: ${property.dto.name}
+   * Owning package: ${property.dto.packageName}
+   * Property prefix: header
+   * </p>
+   * @return a java.lang.String header
+   */
+  public java.lang.String getHeader();
+// Setter here if the four conditions below are all true or not false
+// Read/Write DTO: true
+// Mutable DTO: not false
+// Mutable property: not false
 // Read/Write property: true
 
   /**
    * <p>
-   * Set the descriptionType.
+   * Set the header.
    * </p>
    *
-   * @param descriptionType the value to set into the descriptionType
-   * @throws com.poesys.db.InvalidParametersException when the descriptionType 
+   * @param header the value to set into the header
+   * @throws com.poesys.db.InvalidParametersException when the header 
    *       value is null
    * @throws com.poesys.db.dto.DtoStatusException when the status cannot be set to CHANGED
    */
-  public void setDescriptionType(java.lang.String descriptionType) throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException;
+  public void setHeader(java.lang.String header) throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException;
 
 
   /**

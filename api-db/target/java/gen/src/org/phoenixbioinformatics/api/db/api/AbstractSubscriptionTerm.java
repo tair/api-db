@@ -119,7 +119,7 @@ public abstract class AbstractSubscriptionTerm extends AbstractDto implements IS
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -215,7 +215,7 @@ public abstract class AbstractSubscriptionTerm extends AbstractDto implements IS
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -280,15 +280,11 @@ number with 2 significant digits
    * @param description text describing the term suitable for display in the user interface, such as
 "Annual ($199 USD)" for a 365-day term priced at $199
    */
-  public AbstractSubscriptionTerm(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
+  public AbstractSubscriptionTerm(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.period = period;
 
     if (period == null) {
@@ -418,23 +414,23 @@ number with 2 significant digits
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

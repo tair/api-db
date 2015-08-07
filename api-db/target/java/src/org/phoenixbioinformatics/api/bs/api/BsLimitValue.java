@@ -54,7 +54,7 @@ public class BsLimitValue extends org.phoenixbioinformatics.api.bs.api.AbstractB
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param value the count at which the limit applies
    */
-  public BsLimitValue(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer value) {
+  public BsLimitValue(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer value) {
     super(key, partnerId, value); 
   }
 }

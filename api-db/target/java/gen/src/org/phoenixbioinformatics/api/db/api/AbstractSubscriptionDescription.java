@@ -121,7 +121,7 @@ public abstract class AbstractSubscriptionDescription extends AbstractDto implem
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -217,7 +217,7 @@ public abstract class AbstractSubscriptionDescription extends AbstractDto implem
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -524,32 +524,28 @@ public abstract class AbstractSubscriptionDescription extends AbstractDto implem
    *
    * @param key the primary key of the SubscriptionDescription
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
-   * @param header the header text for the section display
    * @param descriptionType the type of description:
 Default
 Individual
 Institution
 Commercial
+   * @param header the header text for the section display
    */
-  public AbstractSubscriptionDescription(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String header, java.lang.String descriptionType) {
+  public AbstractSubscriptionDescription(IPrimaryKey key, java.lang.String partnerId, java.lang.String descriptionType, java.lang.String header) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
+    this.descriptionType = descriptionType;
+
+    if (descriptionType == null) {
+      throw new com.poesys.db.InvalidParametersException("descriptionType is required for " + key.getValueList());
     }
     
     this.header = header;
 
     if (header == null) {
       throw new com.poesys.db.InvalidParametersException("header is required for " + key.getValueList());
-    }
-    
-    this.descriptionType = descriptionType;
-
-    if (descriptionType == null) {
-      throw new com.poesys.db.InvalidParametersException("descriptionType is required for " + key.getValueList());
     }
     
     // Setter arrays (create if null)
@@ -669,23 +665,23 @@ Commercial
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 
@@ -694,40 +690,6 @@ Commercial
    * otherwise this method does nothing.
    */
   public void clearPartnerId() {
-    // Override in proxy if lazily loaded; otherwise does nothing
-  }
-  /**
-   * Nested property header
-   *
-   * <p>
-   * the header text for the section display
-   * </p>
-   *
-   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
-   * Class is read/write: true
-   * Class is immutable: false
-   * Property is read/write: false
-   * Property is lazy: false
-   */
-  private java.lang.String header;
-  
-  /**
-   * Get an object of java.lang.String.
-   *
-   * Source: AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
-   * 
-   * @return a java.lang.String
-   */
-
-  public java.lang.String getHeader() {
-    return header;
-  }
-
-  /**
-   * Clear the header data member; override in proxy if lazily loaded,
-   * otherwise this method does nothing.
-   */
-  public void clearHeader() {
     // Override in proxy if lazily loaded; otherwise does nothing
   }
   /**
@@ -749,10 +711,10 @@ Commercial
    * Commercial
    * </p>
    *
-   * Added by AddLocalAttributeProperties
+   * Added by AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
    * Class is read/write: true
    * Class is immutable: false
-   * Property is read/write: true
+   * Property is read/write: false
    * Property is lazy: false
    */
   private java.lang.String descriptionType;
@@ -760,7 +722,7 @@ Commercial
   /**
    * Get an object of java.lang.String.
    *
-   * Source: AddLocalAttributeProperties
+   * Source: AddExplicitSubKeyProperties + addNaturalSubkeyOnClass
    * 
    * @return a java.lang.String
    */
@@ -776,10 +738,44 @@ Commercial
   public void clearDescriptionType() {
     // Override in proxy if lazily loaded; otherwise does nothing
   }
+  /**
+   * Nested property header
+   *
+   * <p>
+   * the header text for the section display
+   * </p>
+   *
+   * Added by AddLocalAttributeProperties
+   * Class is read/write: true
+   * Class is immutable: false
+   * Property is read/write: true
+   * Property is lazy: false
+   */
+  private java.lang.String header;
+  
+  /**
+   * Get an object of java.lang.String.
+   *
+   * Source: AddLocalAttributeProperties
+   * 
+   * @return a java.lang.String
+   */
+
+  public java.lang.String getHeader() {
+    return header;
+  }
+
+  /**
+   * Clear the header data member; override in proxy if lazily loaded,
+   * otherwise this method does nothing.
+   */
+  public void clearHeader() {
+    // Override in proxy if lazily loaded; otherwise does nothing
+  }
 
   /**
    * <p>
-   * Set the descriptionType.
+   * Set the header.
    * </p>
    * <ul>
    * <li>Read/Write DTO: true</li>
@@ -789,31 +785,19 @@ Commercial
    * <li>Lazy property: false (if true, proxy calls this method)</li>
    * </ul>
    * <p>
-   * the type of description:
-   * </p>
-   * <p>
-   * Default
-   * </p>
-   * <p>
-   * Individual
-   * </p>
-   * <p>
-   * Institution
-   * </p>
-   * <p>
-   * Commercial
+   * the header text for the section display
    * </p>
    *
-   * @param descriptionType the value with which to set the property
-   * @throws com.poesys.db.InvalidParametersException when the input descriptionType is null
+   * @param header the value with which to set the property
+   * @throws com.poesys.db.InvalidParametersException when the input header is null
    */
-  public void setDescriptionType(java.lang.String descriptionType)
+  public void setHeader(java.lang.String header)
       throws com.poesys.db.InvalidParametersException {
-    if (descriptionType == null) {
-      throw new com.poesys.db.InvalidParametersException("descriptionType is required");
+    if (header == null) {
+      throw new com.poesys.db.InvalidParametersException("header is required");
     }
     
-    this.descriptionType = descriptionType;
+    this.header = header;
     setChanged();
   }
   /**

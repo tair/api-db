@@ -34,7 +34,7 @@ public class AbstractInsertSubscription implements IInsertSql<org.phoenixbioinfo
     index++;
     stmt.setTimestamp(index, object.getEndDate());
     index++;
-    if (object.getSubscriptionId() != null) {stmt.setLong(index, object.getSubscriptionId());} else {stmt.setNull(index, java.sql.Types.BIGINT);};
+    stmt.setBigDecimal(index, object.getSubscriptionId() == null ? null : new java.math.BigDecimal(object.getSubscriptionId()));
     index++;
   }
 }

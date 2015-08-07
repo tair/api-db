@@ -120,7 +120,7 @@ public abstract class AbstractActivationCode extends AbstractDto implements IAct
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -216,7 +216,7 @@ public abstract class AbstractActivationCode extends AbstractDto implements IAct
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -279,7 +279,7 @@ public abstract class AbstractActivationCode extends AbstractDto implements IAct
 code if needed
    * @param partnerId foreign key used by setter to query associated object
    */
-  public AbstractActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.math.BigInteger partnerId) {
+  public AbstractActivationCode(IPrimaryKey key, java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.lang.String partnerId) {
     this.key = key;
 
     this.activationCodeId = activationCodeId;
@@ -635,23 +635,23 @@ code if needed
    * Foreign key used by setter to query associated object
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Added by AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties
+   * Source: AddNaturalKeyProperties + AddToOneAssociationAttributeProperties
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

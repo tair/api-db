@@ -195,9 +195,11 @@ public abstract class AbstractBsParty
    * @param name the name by which the party is known
    * @param partyType the kind of Party this is:
 User
+   * @param display 
+   * @param countryId foreign key used by setter to query associated object
    */
-  public AbstractBsParty(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType) {
-    super(new PartyProxy(new Party(key, partyId, name, partyType)));
+  public AbstractBsParty(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType, java.lang.Boolean display, java.math.BigInteger countryId) {
+    super(new PartyProxy(new Party(key, partyId, name, partyType, display, countryId)));
   }
 
   @SuppressWarnings("unchecked")
@@ -345,6 +347,115 @@ User
   }
 
   /**
+   * 
+   * <p>
+   * Added by AddLocalAttributeProperties as data member
+   * </p>
+   * <p>
+   * <ul>
+   * <li>Property is read/write: true</li>
+   * <li>Property is defined in the data-access object Party</li>
+   * </ul>
+   * </p>
+   * @return a java.lang.Boolean display
+   */
+  public java.lang.Boolean getDisplay() {
+    return dto.getDisplay();
+  }
+
+  /**
+   * <p>
+   * Set the display.
+   * </p>
+   * 
+   * <p>
+   * Added by AddLocalAttributeProperties
+   * </p>
+   * <p>
+   * <ul>
+   * <li>Property is read/write: true</li>
+   * <li>Property is defined in the data-access object Party</li>
+   * </ul>
+   * </p>
+   * @param display the associated business object
+   * @throws com.poesys.db.dto.DtoStatusException when the system can't set
+   *                 the data-access status to CHANGED
+   * @throws com.poesys.db.InvalidParametersException when the property is
+   *                 required but the input parameter display is null
+   */
+  public void setDisplay(java.lang.Boolean display) 
+      throws com.poesys.db.dto.DtoStatusException , com.poesys.db.InvalidParametersException {
+    dto.setDisplay(display);
+  }
+
+  /**
+   * 
+   * <p>
+   * Added by AddToOneAssociationOptionalObjectProperties as data member
+   * </p>
+   * <p>
+   * <ul>
+   * <li>Property is read/write: true</li>
+   * <li>Property is defined in the data-access object Party</li>
+   * </ul>
+   * </p>
+   * @return a org.phoenixbioinformatics.api.bs.api.BsCountry country
+   */
+  public org.phoenixbioinformatics.api.bs.api.BsCountry getCountry() {
+    org.phoenixbioinformatics.api.bs.api.BsCountry bsObject = null;
+    org.phoenixbioinformatics.api.db.api.ICountry object = dto.getCountry();
+	if (object != null) {
+	  bsObject = new org.phoenixbioinformatics.api.bs.api.BsCountry(object);
+	}
+	return bsObject;
+  }
+
+  /**
+   * <p>
+   * Set the country.
+   * </p>
+   * 
+   * <p>
+   * Added by AddToOneAssociationOptionalObjectProperties
+   * </p>
+   * <p>
+   * <ul>
+   * <li>Property is read/write: true</li>
+   * <li>Property is defined in the data-access object Party</li>
+   * </ul>
+   * </p>
+   * @param country the associated business object
+   * @throws com.poesys.db.dto.DtoStatusException when the system can't set
+   *                 the data-access status to CHANGED
+   */
+  public void setCountry(org.phoenixbioinformatics.api.bs.api.BsCountry country) 
+      throws com.poesys.db.dto.DtoStatusException {
+    dto.setCountry(country == null ? null : country.toDto());
+  }
+
+  /**
+   * <p>
+   * Foreign key used by setter to query associated object
+   * </p>
+   * <p>
+   * Added by AddGeneratedKeyProperties + AddToOneAssociationAttributeProperties as data member
+   * </p>
+   * <p>
+   * <ul>
+   * <li>Property is read/write: false</li>
+   * <li>Property is defined in the data-access object Party</li>
+   * </ul>
+   * </p>
+   * @return a java.math.BigInteger countryId
+   */
+  public java.math.BigInteger getCountryId() {
+    java.math.BigInteger bsObject = null;
+    java.math.BigInteger object = dto.getCountryId();
+    bsObject = object;
+	return bsObject;
+  }
+
+  /**
    * <p>
    * the system to which the organization subscribes
    * </p>
@@ -361,7 +472,7 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @return a org.phoenixbioinformatics.api.bs.api.BsPartner partyType
+   * @return a org.phoenixbioinformatics.api.bs.api.BsPartner countryId
    * @throws java.sql.SQLException when the method can't get a SQL connection to 
    *                               load the property lazily
    */
@@ -386,14 +497,14 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @param partyType the associated business object
+   * @param countryId the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    */
-  public void setPartner(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsPartner> partyType) 
+  public void setPartner(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsPartner> countryId) 
       throws com.poesys.db.dto.DtoStatusException{
     SubscribedPartnersCollectionBuilder builder = new SubscribedPartnersCollectionBuilder();
-      dto.setPartner(builder.getCollection(partyType));
+      dto.setPartner(builder.getCollection(countryId));
   }
 
   /**
@@ -409,7 +520,7 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @return a org.phoenixbioinformatics.api.bs.api.BsPageView partyType
+   * @return a org.phoenixbioinformatics.api.bs.api.BsPageView countryId
    */
   public java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsPageView> getSessions() {
     BsSessionsCollectionBuilder builder = new BsSessionsCollectionBuilder();
@@ -432,14 +543,14 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @param partyType the associated business object
+   * @param countryId the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    */
-  public void setSessions(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsPageView> partyType) 
+  public void setSessions(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsPageView> countryId) 
       throws com.poesys.db.dto.DtoStatusException{
     SessionsCollectionBuilder builder = new SessionsCollectionBuilder();
-      dto.setSessions(builder.getCollection(partyType));
+      dto.setSessions(builder.getCollection(countryId));
   }
 
   /**
@@ -455,7 +566,7 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @return a org.phoenixbioinformatics.api.bs.api.BsIpRange partyType
+   * @return a org.phoenixbioinformatics.api.bs.api.BsIpRange countryId
    */
   public java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsIpRange> getIpRanges() {
     BsIpRangesCollectionBuilder builder = new BsIpRangesCollectionBuilder();
@@ -478,14 +589,14 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @param partyType the associated business object
+   * @param countryId the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    */
-  public void setIpRanges(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsIpRange> partyType) 
+  public void setIpRanges(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsIpRange> countryId) 
       throws com.poesys.db.dto.DtoStatusException{
     IpRangesCollectionBuilder builder = new IpRangesCollectionBuilder();
-      dto.setIpRanges(builder.getCollection(partyType));
+      dto.setIpRanges(builder.getCollection(countryId));
   }
 
   /**
@@ -501,7 +612,7 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @return a org.phoenixbioinformatics.api.bs.api.BsLogin partyType
+   * @return a org.phoenixbioinformatics.api.bs.api.BsLogin countryId
    */
   public java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsLogin> getLogin() {
     BsLoginCollectionBuilder builder = new BsLoginCollectionBuilder();
@@ -524,14 +635,14 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @param partyType the associated business object
+   * @param countryId the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    */
-  public void setLogin(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsLogin> partyType) 
+  public void setLogin(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsLogin> countryId) 
       throws com.poesys.db.dto.DtoStatusException{
     LoginCollectionBuilder builder = new LoginCollectionBuilder();
-      dto.setLogin(builder.getCollection(partyType));
+      dto.setLogin(builder.getCollection(countryId));
   }
 
   /**
@@ -551,7 +662,7 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @return a org.phoenixbioinformatics.api.bs.api.BsSubscription partyType
+   * @return a org.phoenixbioinformatics.api.bs.api.BsSubscription countryId
    * @throws java.sql.SQLException when the method can't get a SQL connection to 
    *                               load the property lazily
    */
@@ -576,16 +687,16 @@ User
    * <li>Property is defined in the data-access object Party</li>
    * </ul>
    * </p>
-   * @param partyType the associated business object
+   * @param countryId the associated business object
    * @throws com.poesys.db.dto.DtoStatusException when the system can't set
    *                 the data-access status to CHANGED
    * @throws com.poesys.db.InvalidParametersException when the property is
-   *                 required but the input parameter partyType is null
+   *                 required but the input parameter countryId is null
    */
-  public void setSubscription(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsSubscription> partyType) 
+  public void setSubscription(java.util.Collection<org.phoenixbioinformatics.api.bs.api.BsSubscription> countryId) 
       throws com.poesys.db.dto.DtoStatusException, com.poesys.db.InvalidParametersException {
     SubscriptionCollectionBuilder builder = new SubscriptionCollectionBuilder();
-      dto.setSubscription(builder.getCollection(partyType));
+      dto.setSubscription(builder.getCollection(countryId));
   }
 
   /**

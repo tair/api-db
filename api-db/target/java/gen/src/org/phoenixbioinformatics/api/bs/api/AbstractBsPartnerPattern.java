@@ -71,7 +71,7 @@ original URI that comes into the proxy server
    * @param targetUri the URI that replaces the complete match on the source URI; this is the URI that
 identifies the partner server (the proxied URI for the proxy server)
    */
-  public AbstractBsPartnerPattern(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String sourceUri, java.lang.String targetUri) {
+  public AbstractBsPartnerPattern(IPrimaryKey key, java.lang.String partnerId, java.lang.String sourceUri, java.lang.String targetUri) {
     super(new PartnerPatternProxy(new PartnerPattern(key, partnerId, sourceUri, targetUri)));
   }
 
@@ -107,7 +107,7 @@ identifies the partner server (the proxied URI for the proxy server)
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -115,9 +115,9 @@ identifies the partner server (the proxied URI for the proxy server)
    * <li>Property is defined in the data-access object PartnerPattern</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

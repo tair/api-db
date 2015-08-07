@@ -56,14 +56,14 @@ public abstract class AbstractSubscriptionTermProxy extends AbstractLazyLoadingD
   // Local properties (attributes, associations, and association classes)
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((SubscriptionTerm)dto).getPartnerId();
   }
 

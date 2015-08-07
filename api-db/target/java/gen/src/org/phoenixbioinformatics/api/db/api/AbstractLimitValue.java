@@ -121,7 +121,7 @@ public abstract class AbstractLimitValue extends AbstractDto implements ILimitVa
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -217,7 +217,7 @@ public abstract class AbstractLimitValue extends AbstractDto implements ILimitVa
 
     @Override
     protected boolean createKey() {
-      // Key type: SequenceKey
+      // Key type: NaturalKey
       return true;
     }
   }
@@ -277,15 +277,11 @@ public abstract class AbstractLimitValue extends AbstractDto implements ILimitVa
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param value the count at which the limit applies
    */
-  public AbstractLimitValue(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer value) {
+  public AbstractLimitValue(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer value) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.value = value;
 
     if (value == null) {
@@ -397,23 +393,23 @@ public abstract class AbstractLimitValue extends AbstractDto implements ILimitVa
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    *
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddParentKeyAttributes
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

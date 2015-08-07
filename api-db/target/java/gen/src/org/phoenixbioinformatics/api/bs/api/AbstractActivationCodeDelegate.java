@@ -110,7 +110,7 @@ code if needed
    * @throws DelegateException when there is a problem generating the key or
    *             creating the object
    */
-  public org.phoenixbioinformatics.api.bs.api.BsActivationCode createActivationCode(java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.math.BigInteger partnerId)
+  public org.phoenixbioinformatics.api.bs.api.BsActivationCode createActivationCode(java.util.UUID activationCodeId, java.lang.Integer period, java.sql.Timestamp purchaseDate, java.lang.String partnerId)
       throws DelegateException {
       com.poesys.db.pk.GuidPrimaryKey key = null;
 

@@ -22,7 +22,7 @@ import com.poesys.db.pk.IPrimaryKey;
  */
 public class AbstractInsertSubscriptionDescription implements IInsertSql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescription> {
   private static final String SQL =
-    "INSERT INTO SubscriptionDescription (header, partnerId, descriptionType) VALUES (?,?,?)";
+    "INSERT INTO SubscriptionDescription (descriptionType, partnerId, header) VALUES (?,?,?)";
 
   public String getSql(IPrimaryKey key) {
     return SQL;
@@ -30,7 +30,7 @@ public class AbstractInsertSubscriptionDescription implements IInsertSql<org.pho
 
   public void setParams(PreparedStatement stmt, int index, org.phoenixbioinformatics.api.db.api.ISubscriptionDescription object)
       throws SQLException {
-    stmt.setString(index, object.getDescriptionType());
+    stmt.setString(index, object.getHeader());
     index++;
   }
 }

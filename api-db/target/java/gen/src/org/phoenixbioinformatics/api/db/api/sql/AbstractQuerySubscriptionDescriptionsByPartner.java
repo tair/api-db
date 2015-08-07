@@ -36,7 +36,7 @@ public abstract class AbstractQuerySubscriptionDescriptionsByPartner
     implements IParameterizedQuerySql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescription, org.phoenixbioinformatics.api.db.api.IPartner> {
   /** SQL query statement for SubscriptionDescription */
   private static final String SQL =
-    "SELECT SubscriptionDescription.partnerId, SubscriptionDescription.header, SubscriptionDescription.descriptionType FROM SubscriptionDescription WHERE SubscriptionDescription.partnerId = ?";
+    "SELECT SubscriptionDescription.partnerId, SubscriptionDescription.descriptionType, SubscriptionDescription.header FROM SubscriptionDescription WHERE SubscriptionDescription.partnerId = ?";
 
   public void bindParameters(PreparedStatement stmt, org.phoenixbioinformatics.api.db.api.IPartner parameters)
       throws SQLException {

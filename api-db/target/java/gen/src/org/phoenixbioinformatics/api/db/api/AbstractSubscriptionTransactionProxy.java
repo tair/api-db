@@ -57,14 +57,14 @@ public abstract class AbstractSubscriptionTransactionProxy extends AbstractLazyL
   // Local properties (attributes, associations, and association classes)
 
   /**
-   * Get an object of java.math.BigInteger
+   * Get an object of java.lang.String
    *
-   * Source: AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
+   * Source: AddNaturalKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
    * Lazy: false
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return ((SubscriptionTransaction)dto).getPartnerId();
   }
 

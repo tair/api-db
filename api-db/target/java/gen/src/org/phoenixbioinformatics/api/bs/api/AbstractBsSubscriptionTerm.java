@@ -69,7 +69,7 @@ number with 2 significant digits
    * @param description text describing the term suitable for display in the user interface, such as
 "Annual ($199 USD)" for a 365-day term priced at $199
    */
-  public AbstractBsSubscriptionTerm(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
+  public AbstractBsSubscriptionTerm(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer period, java.lang.Double price, java.lang.Double groupDiscountPercentage, java.lang.String description) {
     super(new SubscriptionTermProxy(new SubscriptionTerm(key, partnerId, period, price, groupDiscountPercentage, description)));
   }
 
@@ -105,7 +105,7 @@ number with 2 significant digits
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -113,9 +113,9 @@ number with 2 significant digits
    * <li>Property is defined in the data-access object SubscriptionTerm</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

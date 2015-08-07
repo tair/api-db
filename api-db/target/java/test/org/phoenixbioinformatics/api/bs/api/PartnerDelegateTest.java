@@ -293,7 +293,7 @@ public class PartnerDelegateTest extends
       Timestamp startDate = new Timestamp(System.currentTimeMillis());
       Timestamp endDate =
         new Timestamp(System.currentTimeMillis() * 1000 * 60 * 60 * 24 * 365);
-      Long subscriptionId = delegate.getSubscriptionId();
+      BigInteger subscriptionId = delegate.getSubscriptionId();
       BsSubscription link =
         delegate.createSubscription(partnersObject,
                                     subscribersObject,

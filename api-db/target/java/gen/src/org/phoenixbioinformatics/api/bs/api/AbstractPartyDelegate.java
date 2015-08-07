@@ -104,11 +104,13 @@ public abstract class AbstractPartyDelegate
    * @param name the name by which the party is known
    * @param partyType the kind of Party this is:
 User
+   * @param display 
+   * @param countryId foreign key used by setter to query associated object
    * @return the new Party object
    * @throws DelegateException when there is a problem generating the key or
    *             creating the object
    */
-  public org.phoenixbioinformatics.api.bs.api.BsParty createParty(java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType)
+  public org.phoenixbioinformatics.api.bs.api.BsParty createParty(java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType, java.lang.Boolean display, java.math.BigInteger countryId)
       throws DelegateException {
       com.poesys.db.pk.SequencePrimaryKey key = null;
 
@@ -165,7 +167,7 @@ User
 
     // Create a data-access DTO proxy (supports lazy loading).
     org.phoenixbioinformatics.api.db.api.IParty dto =
-      new org.phoenixbioinformatics.api.db.api.PartyProxy(new org.phoenixbioinformatics.api.db.api.Party(key, partyId, name, partyType));
+      new org.phoenixbioinformatics.api.db.api.PartyProxy(new org.phoenixbioinformatics.api.db.api.Party(key, partyId, name, partyType, display, countryId));
 
     // Create the business DTO.
     return new org.phoenixbioinformatics.api.bs.api.BsParty(dto);
@@ -229,7 +231,7 @@ TAIR community id); used by the partner to identify the user
    * @return a new Login business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsLogin createLogin(org.phoenixbioinformatics.api.bs.api.BsParty parent, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.math.BigInteger partnerId) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsLogin createLogin(org.phoenixbioinformatics.api.bs.api.BsParty parent, java.math.BigInteger partyId, java.lang.String username, java.lang.String password, java.lang.String email, java.lang.String institution, java.lang.String userIdentifier, java.lang.String partnerId) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -260,9 +262,9 @@ TAIR community id); used by the partner to identify the user
     return new org.phoenixbioinformatics.api.bs.api.BsLogin(dto);
   }
   /**
-   * Create a new SubscriptionTransaction child of Subscription with a composite key.
+   * Create a new SubscriptionTransaction child of Party with a composite key.
    * 
-   * @param parent the parent of the child object to create
+   * @param bsSubscription the parent of the child object to create
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param partyId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param transactionNo the identifying transaction number within the subscription that uniquely
@@ -275,7 +277,7 @@ identifies the transaction along with the subscription key
    * @return a new SubscriptionTransaction business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTransaction createSubscriptionTransaction(org.phoenixbioinformatics.api.bs.api.BsSubscription parent, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscriptionTransaction createSubscriptionTransaction(BsSubscription bsSubscription, java.lang.String partnerId, java.math.BigInteger partyId, java.math.BigInteger transactionNo, java.sql.Timestamp transactionDate, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.String transactionType, java.util.UUID activationCodeId) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.CompositePrimaryKey key = null;
     try {
@@ -285,7 +287,7 @@ identifies the transaction along with the subscription key
 	  com.poesys.db.pk.IPrimaryKey subKey = 
 	    com.poesys.db.pk.PrimaryKeyFactory.createNaturalKey(list, "org.phoenixbioinformatics.api.db.api.SubscriptionTransaction");
       key = 
-        com.poesys.db.pk.PrimaryKeyFactory.createCompositeKey(parent.getPrimaryKey(), 
+        com.poesys.db.pk.PrimaryKeyFactory.createCompositeKey(bsSubscription.getPrimaryKey(), 
                                                               subKey,
                                                               "org.phoenixbioinformatics.api.db.api.SubscriptionTransaction");
     } catch (com.poesys.db.InvalidParametersException e) {
@@ -320,7 +322,7 @@ the subscription is not yet in effect
    * @return a new Subscription business layer DTO
    * @throws DelegateException when a parameter causes a problem
    */
-  public org.phoenixbioinformatics.api.bs.api.BsSubscription createSubscription(org.phoenixbioinformatics.api.bs.api.BsPartner subscribedPartnersObject, org.phoenixbioinformatics.api.bs.api.BsParty subscribersObject, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.Long subscriptionId) throws DelegateException {
+  public org.phoenixbioinformatics.api.bs.api.BsSubscription createSubscription(org.phoenixbioinformatics.api.bs.api.BsPartner subscribedPartnersObject, org.phoenixbioinformatics.api.bs.api.BsParty subscribersObject, java.lang.String partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.math.BigInteger subscriptionId) throws DelegateException {
     // Create the key.
     com.poesys.db.pk.AssociationPrimaryKey key = null;
     try {

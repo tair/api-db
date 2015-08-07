@@ -58,18 +58,18 @@ public interface ISubscriptionTransaction extends IDbDto {
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddAssociationKeyAttributeProperties + AddParentKeyAttributes
    * Owning DTO: Partner
    * Owning package: org.phoenixbioinformatics.api.db.api
    * Property prefix: subscribedPartners
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId();
+  public java.lang.String getPartnerId();
 // Setter here if the four conditions below are all true or not false
 // Read/Write DTO: true
 // Mutable DTO: not false
-// Mutable property: not true
+// Mutable property: not false
 // Read/Write property: false
 
   /**

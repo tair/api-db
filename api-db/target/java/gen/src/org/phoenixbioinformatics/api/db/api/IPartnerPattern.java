@@ -60,18 +60,18 @@ public interface IPartnerPattern extends IDbDto {
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes
    * Owning DTO: ${property.dto.name}
    * Owning package: ${property.dto.packageName}
-   * Property prefix: ${property.prefix}
+   * Property prefix: partnerId
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId();
+  public java.lang.String getPartnerId();
 // Setter here if the four conditions below are all true or not false
 // Read/Write DTO: true
 // Mutable DTO: not false
-// Mutable property: not true
+// Mutable property: not false
 // Read/Write property: false
 
   /**

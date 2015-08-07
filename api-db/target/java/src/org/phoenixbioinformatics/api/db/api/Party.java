@@ -54,9 +54,12 @@ public class Party extends AbstractParty {
    * @param key the primary key of the Party
    * @param partyId primary key attribute
    * @param name the name by which the party is known
-   * @param partyType the name of the immediate subclass in the concrete instance of the class
+   * @param partyType the kind of Party this is:
+User
+   * @param display 
+   * @param countryId foreign key used by setter to query associated object
    */
-  public Party(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType) {
-    super(key, partyId, name, partyType); 
+  public Party(IPrimaryKey key, java.math.BigInteger partyId, java.lang.String name, java.lang.String partyType, java.lang.Boolean display, java.math.BigInteger countryId) {
+    super(key, partyId, name, partyType, display, countryId); 
   }
 }

@@ -29,8 +29,8 @@ import com.poesys.db.dto.DtoStatusException;
  * Stereotypes:
  * </p>
  * <ul>
+ *     <li>NaturalKey</li>
  *     <li>Persistent</li>
- *     <li>SequenceKey</li>
  * </ul>
  * <p>
  * Class is read/write: true
@@ -1785,20 +1785,16 @@ public abstract class AbstractPartner extends AbstractDto implements IPartner {
    * Create a Partner. The concrete subclass must call this constructor.
    *
    * @param key the primary key of the Partner
-   * @param partnerId primary key attribute
+   * @param partnerId 
    * @param name the name of the partner system
    * @param logoUri a URI that returns a logo for the partner
    * @param termOfServiceUri a URI that returns an array of subscription terms for the partner
    */
-  public AbstractPartner(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
+  public AbstractPartner(IPrimaryKey key, java.lang.String partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
     this.key = key;
 
     this.partnerId = partnerId;
 
-    if (partnerId == null) {
-      throw new com.poesys.db.InvalidParametersException("partnerId is required for " + key.getValueList());
-    }
-    
     this.name = name;
 
     if (name == null) {
@@ -1985,27 +1981,25 @@ public abstract class AbstractPartner extends AbstractDto implements IPartner {
   /**
    * Nested property partnerId
    *
-   * <p>
-   * Primary key attribute
-   * </p>
+   * 
    *
-   * Added by AddGeneratedKeyProperties
+   * Added by AddNaturalKeyProperties
    * Class is read/write: true
    * Class is immutable: false
    * Property is read/write: false
    * Property is lazy: false
    */
-  private java.math.BigInteger partnerId;
+  private java.lang.String partnerId;
   
   /**
-   * Get an object of java.math.BigInteger.
+   * Get an object of java.lang.String.
    *
-   * Source: AddGeneratedKeyProperties
+   * Source: AddNaturalKeyProperties
    * 
-   * @return a java.math.BigInteger
+   * @return a java.lang.String
    */
 
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return partnerId;
   }
 

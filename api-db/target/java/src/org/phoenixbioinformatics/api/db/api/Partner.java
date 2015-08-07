@@ -25,8 +25,8 @@ import com.poesys.db.pk.IPrimaryKey;
  * Stereotypes:
  * </p>
  * <ul>
+ *     <li>NaturalKey</li>
  *     <li>Persistent</li>
- *     <li>SequenceKey</li>
  * </ul>
  * 
  * @author Poesys/DB Cartridge
@@ -53,12 +53,12 @@ public class Partner extends AbstractPartner {
    * </p>
    *
    * @param key the primary key of the Partner
-   * @param partnerId primary key attribute
+   * @param partnerId 
    * @param name the name of the partner system
    * @param logoUri a URI that returns a logo for the partner
    * @param termOfServiceUri a URI that returns an array of subscription terms for the partner
    */
-  public Partner(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
+  public Partner(IPrimaryKey key, java.lang.String partnerId, java.lang.String name, java.lang.String logoUri, java.lang.String termOfServiceUri) {
     super(key, partnerId, name, logoUri, termOfServiceUri); 
   }
 }

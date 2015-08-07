@@ -26,7 +26,7 @@ import com.poesys.db.pk.IPrimaryKey;
 public abstract class AbstractQuerySubscriptionDescription implements IKeyQuerySql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescription> {
   /** SQL query statement for SubscriptionDescription */
   private static final String SQL =
-    "SELECT partnerId, header, descriptionType FROM SubscriptionDescription WHERE ";
+    "SELECT partnerId, descriptionType, header FROM SubscriptionDescription WHERE ";
 
   public org.phoenixbioinformatics.api.db.api.ISubscriptionDescription getData(IPrimaryKey key, ResultSet rs) throws SQLException {
     return org.phoenixbioinformatics.api.db.api.ApiFactory.getSubscriptionDescriptionData(key, rs);

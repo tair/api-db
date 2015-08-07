@@ -53,7 +53,7 @@ public class BsIpCount extends org.phoenixbioinformatics.api.bs.api.AbstractBsIp
    * @param ip the IP address being tracked (IPv4 or IPv6)
    * @param count the count of page views by the IP address since initialization
    */
-  public BsIpCount(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String ip, java.lang.Integer count) {
+  public BsIpCount(IPrimaryKey key, java.lang.String partnerId, java.lang.String ip, java.lang.Integer count) {
     super(key, partnerId, ip, count); 
   }
 }

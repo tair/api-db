@@ -22,7 +22,7 @@ import com.poesys.db.pk.IPrimaryKey;
  */
 public class AbstractInsertSubscriptionDescriptionItem implements IInsertSql<org.phoenixbioinformatics.api.db.api.ISubscriptionDescriptionItem> {
   private static final String SQL =
-    "INSERT INTO SubscriptionDescriptionItem (header, itemNo, partnerId, text) VALUES (?,?,?,?)";
+    "INSERT INTO SubscriptionDescriptionItem (descriptionType, itemNo, partnerId, text) VALUES (?,?,?,?)";
 
   public String getSql(IPrimaryKey key) {
     return SQL;

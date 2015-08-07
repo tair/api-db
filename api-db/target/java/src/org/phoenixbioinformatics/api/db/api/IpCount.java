@@ -56,7 +56,7 @@ public class IpCount extends AbstractIpCount {
    * @param ip the IP address being tracked (IPv4 or IPv6)
    * @param count the count of page views by the IP address since initialization
    */
-  public IpCount(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.String ip, java.lang.Integer count) {
+  public IpCount(IPrimaryKey key, java.lang.String partnerId, java.lang.String ip, java.lang.Integer count) {
     super(key, partnerId, ip, count); 
   }
 }

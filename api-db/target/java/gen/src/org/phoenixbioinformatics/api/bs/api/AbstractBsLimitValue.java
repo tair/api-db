@@ -66,7 +66,7 @@ public abstract class AbstractBsLimitValue
    * @param partnerId composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * @param value the count at which the limit applies
    */
-  public AbstractBsLimitValue(IPrimaryKey key, java.math.BigInteger partnerId, java.lang.Integer value) {
+  public AbstractBsLimitValue(IPrimaryKey key, java.lang.String partnerId, java.lang.Integer value) {
     super(new LimitValueProxy(new LimitValue(key, partnerId, value)));
   }
 
@@ -102,7 +102,7 @@ public abstract class AbstractBsLimitValue
    * Composite super-key attribute that uniquely identifies child combined with child sub-key and any other parent super-keys
    * </p>
    * <p>
-   * Added by AddGeneratedKeyProperties + AddParentKeyAttributes as data member
+   * Added by AddNaturalKeyProperties + AddParentKeyAttributes as data member
    * </p>
    * <p>
    * <ul>
@@ -110,9 +110,9 @@ public abstract class AbstractBsLimitValue
    * <li>Property is defined in the data-access object LimitValue</li>
    * </ul>
    * </p>
-   * @return a java.math.BigInteger partnerId
+   * @return a java.lang.String partnerId
    */
-  public java.math.BigInteger getPartnerId() {
+  public java.lang.String getPartnerId() {
     return dto.getPartnerId();
   }
 

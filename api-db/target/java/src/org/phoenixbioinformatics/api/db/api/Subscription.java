@@ -53,7 +53,7 @@ public class Subscription extends AbstractSubscription {
    * </p>
    *
    * @param key the primary key of the Subscription
-   * @param partnersObject wraps an associated IPartner object
+   * @param subscribedPartnersObject wraps an associated IPartner object
    * @param subscribersObject wraps an associated IParty object
    * @param partnerId Attribute that is part of the association key
    * @param partyId Attribute that is part of the association key
@@ -62,7 +62,7 @@ the subscription is not yet in effect
    * @param endDate the date and time at which the subscription ends
    * @param subscriptionId an alternate single-number identifier for the subscription
    */
-  public Subscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner partnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.math.BigInteger partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.lang.Long subscriptionId) {
-    super(key, partnersObject, subscribersObject, partnerId, partyId, startDate, endDate, subscriptionId); 
+  public Subscription(IPrimaryKey key, org.phoenixbioinformatics.api.db.api.IPartner subscribedPartnersObject, org.phoenixbioinformatics.api.db.api.IParty subscribersObject, java.lang.String partnerId, java.math.BigInteger partyId, java.sql.Timestamp startDate, java.sql.Timestamp endDate, java.math.BigInteger subscriptionId) {
+    super(key, subscribedPartnersObject, subscribersObject, partnerId, partyId, startDate, endDate, subscriptionId); 
   }
 }
